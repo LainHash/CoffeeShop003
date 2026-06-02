@@ -25,4 +25,10 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+using (var scope = app.Services.CreateScope())
+{
+    var seeder = scope.ServiceProvider.GetRequiredService<CoffeeShop.Infrastructure.Persistence.Seed.DatabaseSeeder>();
+    await seeder.InitializeAsync();
+}
+
 app.Run();

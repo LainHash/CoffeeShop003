@@ -2,7 +2,7 @@ using CoffeeShop.Domain.Entities.Misc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace CoffeeShop.Infrastructure.Persistence.Configurations.Catalog
+namespace CoffeeShop.Infrastructure.Persistence.Configurations.Misc
 {
     public class ImageConfiguration : IEntityTypeConfiguration<Image>
     {

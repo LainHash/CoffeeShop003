@@ -1,0 +1,36 @@
+﻿RecipeStepId,RecipeId,StepNumber,Description,DurationSeconds
+1,1,1,Xay 18g hạt cà phê Espresso với độ mịn cao,10
+2,1,2,Nén bột cà phê phẳng và đều bằng tamper với lực khoảng 15kg,5
+3,1,3,Chiết xuất Espresso dưới áp suất 9 bar để thu được 30ml cà phê thành phẩm,30
+4,2,1,Xay 20g hạt cà phê với độ mịn tiêu chuẩn cho handle đôi,10
+5,2,2,Nén bột cà phê phẳng và đều vào handle đôi,5
+6,2,3,Chiết xuất Espresso đôi để thu được 60ml cà phê đậm đà,30
+7,3,1,Rót 120ml nước nóng khoảng 90°C vào tách,10
+8,3,2,Chiết xuất 1 shot Espresso (30ml) trực tiếp lên bề mặt nước nóng để giữ lớp crema,30
+9,4,1,Chiết xuất 1 shot Espresso (30ml) vào tách sứ lớn,30
+10,4,2,Tạo bọt sữa nóng (150ml sữa tươi) ở nhiệt độ 60-65°C với lớp bọt dày khoảng 1.5 - 2cm,30
+11,4,3,Rót sữa nóng và bọt sữa từ từ vào tách Espresso,15
+12,5,1,Chiết xuất 1 shot Espresso (30ml) vào tách lớn,30
+13,5,2,Tạo bọt sữa nóng (200ml sữa tươi) với lớp bọt mỏng khoảng 0.5cm,30
+14,5,3,Rót sữa từ từ vào Espresso và tạo hình nghệ thuật trên bề mặt,15
+15,6,1,Hòa tan 15g bột sô-cô-la vào tách cùng với 1 shot Espresso nóng (30ml),20
+16,6,2,Tạo bọt sữa nóng (150ml sữa tươi) với lớp bọt mỏng,30
+17,6,3,Rót sữa nóng vào hỗn hợp sô-cô-la cà phê,15
+18,6,4,Phủ kem tươi whipping cream (30ml) lên bề mặt và trang trí bằng bột sô-cô-la,15
+19,7,1,Chiết xuất 1 shot Espresso (30ml) vào tách thủy tinh nhỏ,30
+20,7,2,Tạo bọt sữa nóng (60ml sữa tươi) với lớp bọt rất mỏng,20
+21,7,3,Rót sữa nóng từ từ vào tách theo tỉ lệ 1:1 với cà phê,10
+22,8,1,Chiết xuất 1 shot Espresso đôi (hoặc Espresso 30ml) vào tách,30
+23,8,2,Đánh sữa nóng (150ml sữa tươi) để tạo lớp bọt siêu mịn (microfoam),30
+24,8,3,Rót sữa siêu mịn vào cà phê tạo hương vị béo mịn đặc trưng,15
+25,9,1,Chiết xuất 1 shot Espresso (30ml) vào tách thủy tinh nhỏ,30
+26,9,2,Đánh sữa nóng tạo bọt dày,20
+27,9,3,Múc một muỗng bọt sữa nhỏ đặt lên trung tâm tách Espresso tạo đốm sữa,5
+28,10,1,Chiết xuất 1 shot Espresso (30ml) vào tách,30
+29,10,2,Xịt kem tươi whipping cream (40ml) phủ kín bề mặt tách cà phê,15
+30,11,1,Múc một viên kem vani cho vào ly thủy tinh sâu lòng,15
+31,11,2,Chiết xuất 1 shot Espresso nóng (30ml) vào ca rót nhỏ,30
+32,11,3,Rót trực tiếp shot Espresso nóng lên viên kem lạnh khi phục vụ,10
+33,12,1,Hòa tan 10g đường nâu vào 90ml cà phê nóng,20
+34,12,2,Thêm 30ml rượu Whisky Ireland vào hỗn hợp cà phê nóng và khuấy đều,15
+35,12,3,Rót nhẹ nhàng 30ml kem tươi đánh bông nhẹ lên trên bề mặt qua muỗng để kem nổi lên trên,30

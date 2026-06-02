@@ -1,0 +1,43 @@
+IngredientId,IngredientName,Description,BrandId,CategoryId
+1,Flavored Syrup,,1,1
+2,Flavored Syrup,,2,1
+3,Flavored Syrup,,3,1
+4,Flavored Syrup,,4,1
+5,Tea,,5,1
+6,Tea,,6,1
+7,Tea,,7,1
+8,Tea,,8,1
+9,Sweetened Condensed Milk,,9,1
+10,Sweetened Condensed Milk,,10,1
+11,Fresh Milk,,11,1
+12,Fresh Milk,,12,1
+13,Fresh Milk,,13,1
+14,Yogurt,,11,1
+15,Heavy Cream,,14,1
+16,Heavy Cream,,15,1
+17,Heavy Cream,,16,1
+18,Whipping Cream,,14,1
+19,Sugar,,17,1
+20,Sugar,,18,1
+21,Sugar,,19,1
+22,Fruit Jam,,20,1
+23,Fruit Jam,,21,1
+24,Fruit Jam,,22,1
+25,Smoothie Base,,20,1
+26,Smoothie Base,,21,1
+27,Fruit Juice Concentrate,,21,1
+28,Matcha,,23,1
+29,Matcha,,24,1
+30,Matcha,,25,1
+31,Whipping Cream,,26,1
+32,Whipping Cream,,27,1
+33,Cream Cheese,,26,1
+34,Cream Cheese,,28,1
+35,Yogurt,,29,1
+36,Fruit Juice Concentrate,,30,1
+37,Fruit Juice Concentrate,,31,1
+38,Cacao,,32,1
+39,Cacao,,33,1
+40,Chocolate,,34,1
+41,Chocolate,,35,1
+42,Chocolate,,32,1

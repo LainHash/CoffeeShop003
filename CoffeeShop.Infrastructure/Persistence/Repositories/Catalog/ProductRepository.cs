@@ -31,12 +31,7 @@ namespace CoffeeShop.Infrastructure.Persistence.Repositories.Catalog
                     IsDeleted = p.IsDeleted
                 })
                 .ToListAsync();
-            return new Result<List<ProductDTO>>
-            {
-                IsSuccess = true,
-                Message = "Products retrieved successfully.",
-                Data = products
-            };
+            return Result<List<ProductDTO>>.SuccessResponse(products, "Products retrieved successfully.");
         }
 
         public async Task<Result<ProductDTO>> GetProductByPublicIdAsync(Guid publicId)
@@ -57,21 +52,12 @@ namespace CoffeeShop.Infrastructure.Persistence.Repositories.Catalog
                     IsDeleted = p.IsDeleted
                 })
                 .FirstOrDefaultAsync(p => p.PublicId == publicId);
-            if(product == null)
+            if (product == null)
             {
-                return new Result<ProductDTO>
-                {
-                    IsSuccess = false,
-                    Message = "Product not found.",
-                    Data = null
-                };
+                return Result<ProductDTO>.ErrorResponse("Product not found.");
             }
-            return new Result<ProductDTO>
-            {
-                IsSuccess = true,
-                Message = "Product retrieved successfully.",
-                Data = product
-            };
+            return Result<ProductDTO>.SuccessResponse(product, "Product retrieved successfully.");
+
         }
     }
 }

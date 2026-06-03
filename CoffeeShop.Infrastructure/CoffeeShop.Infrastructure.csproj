@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -13,14 +13,21 @@
 
   <ItemGroup>
     <Folder Include="Identity\" />
-    <Folder Include="Persistence\Configurations\" />
     <Folder Include="Persistence\Extensions\" />
-    <Folder Include="Persistence\Migrations\" />
-    <Folder Include="Persistence\Seed\" />
-    <Folder Include="Persistence\Repositories\" />
+    <Folder Include="Persistence\Seed\Implementation\Catalog\" />
+    <Folder Include="Persistence\Seed\Implementation\Inventory\" />
+    <Folder Include="Persistence\Seed\Implementation\Misc\" />
+    <Folder Include="Persistence\Seed\Implementation\Production\" />
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="Persistence\Seed\Data\**\*.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CsvHelper" Version="33.1.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.27" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.27" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.27">

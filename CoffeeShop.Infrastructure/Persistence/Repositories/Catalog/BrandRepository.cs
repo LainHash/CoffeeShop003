@@ -13,7 +13,7 @@ namespace CoffeeShop.Infrastructure.Persistence.Repositories.Catalog
             _context = context;
         }
 
-        public async Task<Result<List<BrandDTO>>> GetAllBrandsAsync()
+        public async Task<Result<List<BrandDTO>>> GetBrandsAsync()
         {
             var brands = await _context.Brands.Select(b => new BrandDTO
             {

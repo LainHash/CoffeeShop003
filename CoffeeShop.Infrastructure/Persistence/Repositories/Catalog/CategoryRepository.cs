@@ -13,7 +13,7 @@ namespace CoffeeShop.Infrastructure.Persistence.Repositories.Catalog
             _context = context;
         }
 
-        public async Task<Result<List<CategoryDTO>>> GetAllCategoriesAsync()
+        public async Task<Result<List<CategoryDTO>>> GetCategoriesAsync()
         {
             var categories = await _context.Categories
                 .Select(c => new CategoryDTO

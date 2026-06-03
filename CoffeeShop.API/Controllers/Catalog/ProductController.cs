@@ -2,7 +2,7 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CoffeeShop.API.Controllers
+namespace CoffeeShop.API.Controllers.Catalog
 {
     [ApiController]
     [Route("api/[controller]")]

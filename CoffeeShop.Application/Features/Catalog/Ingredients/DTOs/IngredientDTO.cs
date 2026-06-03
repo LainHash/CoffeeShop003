@@ -1,13 +1,12 @@
-﻿namespace CoffeeShop.Application.Features.Catalog.Products.DTOs
+﻿namespace CoffeeShop.Application.Features.Catalog.Ingredients.DTOs
 {
-    public class ProductDTO
+    public class IngredientDTO
     {
-        public Guid PublicId { get; set; }
-        public string ProductName { get; set; } = null!;
+        public Guid PublicId { get; set; } = Guid.NewGuid();
+        public string IngredientName { get; set; } = null!;
         public string? Description { get; set; }
-        public bool IsMadeToOrder { get; set; }
 
-        public string? BrandName { get; set; }
+        public string BrandName { get; set; } = null!;
         public string CategoryName { get; set; } = null!;
 
         public decimal UnitPrice { get; set; }

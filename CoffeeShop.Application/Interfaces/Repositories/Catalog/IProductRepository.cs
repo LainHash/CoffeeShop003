@@ -5,7 +5,7 @@ namespace CoffeeShop.Application.Interfaces.Repositories.Catalog
 {
     public interface IProductRepository
     {
-        Task<Result<List<ProductDTO>>> GetAllProductsAsync();
+        Task<Result<List<ProductDTO>>> GetProductsAsync();
         Task<Result<ProductDTO>> GetProductByPublicIdAsync(Guid publicId);
     }
 }

@@ -5,6 +5,6 @@ namespace CoffeeShop.Application.Interfaces.Repositories.Catalog
 {
     public interface IBrandRepository
     {
-        Task<Result<List<BrandDTO>>> GetAllBrandsAsync();
+        Task<Result<List<BrandDTO>>> GetBrandsAsync();
     }
 }

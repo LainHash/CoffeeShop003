@@ -19,10 +19,8 @@
   <ItemGroup>
     <Folder Include="Behaviors\" />
     <Folder Include="Features\Catalog\Brands\Commands\" />
-    <Folder Include="Features\Catalog\Brands\Queries\" />
     <Folder Include="Features\Catalog\Categories\Commands\" />
-    <Folder Include="Features\Catalog\Categories\Queries\" />
-    <Folder Include="Features\Catalog\Ingredients\" />
+    <Folder Include="Features\Catalog\Ingredients\Commands\" />
     <Folder Include="Features\Catalog\Products\Commands\" />
     <Folder Include="Features\Inventory\" />
     <Folder Include="Features\Misc\" />

@@ -2,8 +2,9 @@
 {
     public static class StockStatus
     {
-        public const string InStock = "InStock";
-        public const string OutOfStock = "OutOfStock";
-        public const string LowStock = "LowStock";
+        public const string Active = "Active";
+        public const string Inactive = "Inactive";
+        public const string Discontinued = "Discontinued";
+        public const string Damaged = "Damaged";
     }
 }

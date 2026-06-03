@@ -13,11 +13,12 @@ namespace CoffeeShop.Infrastructure.Persistence.Repositories.Catalog
             _context = context;
         }
 
-        public async Task<Result<List<ProductDTO>>> GetAllProductsAsync()
+        public async Task<Result<List<ProductDTO>>> GetProductsAsync()
         {
             var products = await _context.Products
                 .Include(p => p.Category)
                 .Include(p => p.Brand)
+                .Include(p => p.ProductSku)
                 .Select(p => new ProductDTO
                 {
                     PublicId = p.PublicId,
@@ -26,6 +27,10 @@ namespace CoffeeShop.Infrastructure.Persistence.Repositories.Catalog
                     IsMadeToOrder = p.IsMadeToOrder,
                     BrandName = p.Brand != null ? p.Brand.BrandName : string.Empty,
                     CategoryName = p.Category.CategoryName,
+                    UnitPrice = p.ProductSku!.UnitPrice,
+                    Unit = p.ProductSku!.Unit,
+                    Stock = p.ProductSku!.Stock,
+                    Status = p.ProductSku!.Status,
                     CreatedAt = p.CreatedAt,
                     UpdatedAt = p.UpdatedAt,
                     IsDeleted = p.IsDeleted
@@ -47,6 +52,10 @@ namespace CoffeeShop.Infrastructure.Persistence.Repositories.Catalog
                     IsMadeToOrder = p.IsMadeToOrder,
                     BrandName = p.Brand != null ? p.Brand.BrandName : string.Empty,
                     CategoryName = p.Category.CategoryName,
+                    UnitPrice = p.ProductSku!.UnitPrice,
+                    Unit = p.ProductSku!.Unit,
+                    Stock = p.ProductSku!.Stock,
+                    Status = p.ProductSku!.Status,
                     CreatedAt = p.CreatedAt,
                     UpdatedAt = p.UpdatedAt,
                     IsDeleted = p.IsDeleted

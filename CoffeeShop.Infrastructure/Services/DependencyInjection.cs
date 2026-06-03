@@ -1,4 +1,11 @@
+using CoffeeShop.Application.Interfaces.Repositories.Catalog;
 using CoffeeShop.Infrastructure.Persistence;
+using CoffeeShop.Infrastructure.Persistence.Repositories.Catalog;
+using CoffeeShop.Infrastructure.Persistence.Seed;
+using CoffeeShop.Infrastructure.Persistence.Seed.Implementation.Catalog;
+using CoffeeShop.Infrastructure.Persistence.Seed.Implementation.Inventory;
+using CoffeeShop.Infrastructure.Persistence.Seed.Implementation.Misc;
+using CoffeeShop.Infrastructure.Persistence.Seed.Implementation.Production;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -14,18 +21,21 @@ namespace CoffeeShop.Infrastructure.Services
                 configuration.GetConnectionString("MyConnectString")));
 
             // Seeders
-            services.AddScoped<CoffeeShop.Infrastructure.Persistence.Seed.DatabaseSeeder>();
-            services.AddScoped<CoffeeShop.Infrastructure.Persistence.Seed.Implementation.Catalog.BrandSeeder>();
-            services.AddScoped<CoffeeShop.Infrastructure.Persistence.Seed.Implementation.Catalog.CategorySeeder>();
-            services.AddScoped<CoffeeShop.Infrastructure.Persistence.Seed.Implementation.Catalog.ProductSeeder>();
-            services.AddScoped<CoffeeShop.Infrastructure.Persistence.Seed.Implementation.Catalog.IngredientSeeder>();
-            services.AddScoped<CoffeeShop.Infrastructure.Persistence.Seed.Implementation.Inventory.ProductSkuSeeder>();
-            services.AddScoped<CoffeeShop.Infrastructure.Persistence.Seed.Implementation.Inventory.IngredientSkuSeeder>();
-            services.AddScoped<CoffeeShop.Infrastructure.Persistence.Seed.Implementation.Inventory.StockTransactionSeeder>();
-            services.AddScoped<CoffeeShop.Infrastructure.Persistence.Seed.Implementation.Misc.ImageSeeder>();
-            services.AddScoped<CoffeeShop.Infrastructure.Persistence.Seed.Implementation.Production.RecipeSeeder>();
-            services.AddScoped<CoffeeShop.Infrastructure.Persistence.Seed.Implementation.Production.RecipeIngredientSeeder>();
-            services.AddScoped<CoffeeShop.Infrastructure.Persistence.Seed.Implementation.Production.RecipeStepSeeder>();
+            services.AddScoped<DatabaseSeeder>();
+            services.AddScoped<BrandSeeder>();
+            services.AddScoped<CategorySeeder>();
+            services.AddScoped<ProductSeeder>();
+            services.AddScoped<IngredientSeeder>();
+            services.AddScoped<ProductSkuSeeder>();
+            services.AddScoped<IngredientSkuSeeder>();
+            services.AddScoped<StockTransactionSeeder>();
+            services.AddScoped<ImageSeeder>();
+            services.AddScoped<RecipeSeeder>();
+            services.AddScoped<RecipeIngredientSeeder>();
+            services.AddScoped<RecipeStepSeeder>();
+
+            // Repositories
+            services.AddScoped<IProductRepository, ProductRepository>();
 
             return services;
         }

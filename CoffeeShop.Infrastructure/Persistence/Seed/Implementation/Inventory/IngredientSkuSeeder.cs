@@ -3,7 +3,6 @@ using CsvHelper;
 using CsvHelper.Configuration;
 using Microsoft.EntityFrameworkCore;
 using System.Globalization;
-using CoffeeShop.Domain.Enums;
 
 namespace CoffeeShop.Infrastructure.Persistence.Seed.Implementation.Inventory;
 

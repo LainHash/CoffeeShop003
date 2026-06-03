@@ -3,7 +3,6 @@ using CsvHelper;
 using CsvHelper.Configuration;
 using Microsoft.EntityFrameworkCore;
 using System.Globalization;
-using CoffeeShop.Domain.Enums;
 
 namespace CoffeeShop.Infrastructure.Persistence.Seed.Implementation.Inventory;
 
@@ -22,24 +21,21 @@ public class StockTransactionSeeder : IDataSeeder
 
         var records = csv.GetRecords<StockTransactionRecord>().ToList();
         if (!records.Any()) return;
-        
+
         var strategy = context.Database.CreateExecutionStrategy();
         await strategy.ExecuteAsync(async () =>
         {
             using var transaction = await context.Database.BeginTransactionAsync();
             foreach (var record in records)
             {
-                if (Enum.TryParse<ReferenceType>(record.Type, out var type))
+                context.StockTransactions.Add(new StockTransaction
                 {
-                    context.StockTransactions.Add(new StockTransaction
-                    {
-                        StockTransactionId = record.StockTransactionId,
-                        Type = type,
-                        Quantity = record.Quantity,
-                        Note = record.Note,
-                        ReferenceId = record.ReferenceId
-                    });
-                }
+                    StockTransactionId = record.StockTransactionId,
+                    Type = record.Type,
+                    Quantity = record.Quantity,
+                    Note = record.Note,
+                    ReferenceId = record.ReferenceId
+                });
             }
 
             await context.Database.ExecuteSqlRawAsync("SET IDENTITY_INSERT StockTransactions ON");

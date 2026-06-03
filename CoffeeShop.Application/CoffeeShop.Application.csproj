@@ -16,4 +16,21 @@
     <ProjectReference Include="..\CoffeeShop.Domain\CoffeeShop.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Behaviors\" />
+    <Folder Include="Features\Catalog\Brands\Commands\" />
+    <Folder Include="Features\Catalog\Brands\Queries\" />
+    <Folder Include="Features\Catalog\Categories\Commands\" />
+    <Folder Include="Features\Catalog\Categories\Queries\" />
+    <Folder Include="Features\Catalog\Ingredients\" />
+    <Folder Include="Features\Catalog\Products\Commands\" />
+    <Folder Include="Features\Inventory\" />
+    <Folder Include="Features\Misc\" />
+    <Folder Include="Features\Production\" />
+    <Folder Include="Features\Inventory\StockTransactions\" />
+    <Folder Include="Features\Misc\Images\" />
+    <Folder Include="Features\Production\Recipes\" />
+    <Folder Include="Interfaces\Services\" />
+  </ItemGroup>
+
 </Project>

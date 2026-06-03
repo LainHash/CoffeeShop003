@@ -15,7 +15,6 @@
     <Folder Include="Identity\" />
     <Folder Include="Persistence\Extensions\" />
     <Folder Include="Persistence\Migrations\" />
-    <Folder Include="Persistence\Repositories\" />
     <Folder Include="Persistence\Seed\Implementation\Catalog\" />
     <Folder Include="Persistence\Seed\Implementation\Inventory\" />
     <Folder Include="Persistence\Seed\Implementation\Misc\" />

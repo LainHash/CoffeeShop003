@@ -3,7 +3,6 @@ using CsvHelper;
 using CsvHelper.Configuration;
 using Microsoft.EntityFrameworkCore;
 using System.Globalization;
-using CoffeeShop.Domain.Enums;
 
 namespace CoffeeShop.Infrastructure.Persistence.Seed.Implementation.Misc;
 
@@ -21,24 +20,21 @@ public class ImageSeeder : IDataSeeder
         using var csv = new CsvReader(reader, new CsvConfiguration(CultureInfo.InvariantCulture) { HasHeaderRecord = true });
 
         var records = csv.GetRecords<ImageRecord>().ToList();
-        
+
         var strategy = context.Database.CreateExecutionStrategy();
         await strategy.ExecuteAsync(async () =>
         {
             using var transaction = await context.Database.BeginTransactionAsync();
             foreach (var record in records)
             {
-                if (Enum.TryParse<ReferenceType>(record.Type, out var type))
+                context.Images.Add(new Image
                 {
-                    context.Images.Add(new Image
-                    {
-                        ImageId = record.ImageId,
-                        ImageUrl = record.ImageUrl,
-                        IsPrimary = record.IsPrimary == 1,
-                        ReferenceId = record.ReferenceId,
-                        Type = type
-                    });
-                }
+                    ImageId = record.ImageId,
+                    ImageUrl = record.ImageUrl,
+                    IsPrimary = record.IsPrimary == 1,
+                    ReferenceId = record.ReferenceId,
+                    Type = record.Type
+                });
             }
 
             await context.Database.ExecuteSqlRawAsync("SET IDENTITY_INSERT Images ON");

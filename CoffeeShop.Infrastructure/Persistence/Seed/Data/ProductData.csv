@@ -1,13 +1,29 @@
-ProductId,ProductName,Description,CategoryId,IsMadeToOrder
-1,Espresso,"Cà phê nguyên chất được chiết xuất dưới áp suất cao, mang hương vị đậm đà và lớp crema đặc trưng.",1,1
-2,Doppio,"Hai shot Espresso kết hợp, cho hương vị mạnh mẽ và hàm lượng caffeine cao hơn Espresso thông thường.",1,1
-3,Americano,"Espresso pha loãng với nước nóng, giữ hương thơm cà phê nhưng dễ uống và nhẹ hơn.",1,1
-4,Cappuccino,"Sự hòa quyện giữa Espresso, sữa nóng và lớp bọt sữa dày mịn, cân bằng giữa vị đắng và béo.",1,1
-5,Latte,"Espresso kết hợp nhiều sữa nóng và một lớp bọt sữa mỏng, mang hương vị dịu nhẹ và béo ngậy.",1,1
-6,Mocha,"Sự kết hợp giữa Espresso, sô-cô-la và sữa tươi, tạo nên hương vị ngọt ngào và hấp dẫn.",1,1
-7,Cortado,"Espresso pha cùng lượng sữa nóng tương đương, giúp giảm độ gắt nhưng vẫn giữ vị cà phê đậm đà.",1,1
-8,Flat White,"Espresso kết hợp sữa được đánh mịn (microfoam), mang hương vị cà phê nổi bật hơn Latte.",1,1
-9,Macchiato,"Espresso được điểm thêm một lớp bọt sữa nhỏ, giữ nguyên vị cà phê mạnh mẽ với chút béo nhẹ.",1,1
-10,Con Panna,"Espresso phủ kem tươi đánh bông, tạo sự cân bằng giữa vị đắng của cà phê và độ béo của kem.",1,1
-11,Affogato,"Kem vani được ""nhấn chìm"" trong Espresso nóng, mang đến trải nghiệm vừa là món tráng miệng vừa là cà phê.",1,1
-12,Irish Coffee,"Cà phê nóng kết hợp whisky Ireland, đường nâu và kem tươi, tạo nên thức uống ấm áp và độc đáo.",1,1
+ProductId,ProductName,Description,CategoryId,BrandId,IsMadeToOrder
+1,Espresso,"Cà phê nguyên chất được chiết xuất dưới áp suất cao, mang hương vị đậm đà và lớp crema đặc trưng.",1,,1
+2,Doppio,"Hai shot Espresso kết hợp, cho hương vị mạnh mẽ và hàm lượng caffeine cao hơn Espresso thông thường.",1,,1
+3,Americano,"Espresso pha loãng với nước nóng, giữ hương thơm cà phê nhưng dễ uống và nhẹ hơn.",1,,1
+4,Cappuccino,"Sự hòa quyện giữa Espresso, sữa nóng và lớp bọt sữa dày mịn, cân bằng giữa vị đắng và béo.",1,,1
+5,Latte,"Espresso kết hợp nhiều sữa nóng và một lớp bọt sữa mỏng, mang hương vị dịu nhẹ và béo ngậy.",1,,1
+6,Mocha,"Sự kết hợp giữa Espresso, sô-cô-la và sữa tươi, tạo nên hương vị ngọt ngào và hấp dẫn.",1,,1
+7,Cortado,"Espresso pha cùng lượng sữa nóng tương đương, giúp giảm độ gắt nhưng vẫn giữ vị cà phê đậm đà.",1,,1
+8,Flat White,"Espresso kết hợp sữa được đánh mịn (microfoam), mang hương vị cà phê nổi bật hơn Latte.",1,,1
+9,Macchiato,"Espresso được điểm thêm một lớp bọt sữa nhỏ, giữ nguyên vị cà phê mạnh mẽ với chút béo nhẹ.",1,,1
+10,Con Panna,"Espresso phủ kem tươi đánh bông, tạo sự cân bằng giữa vị đắng của cà phê và độ béo của kem.",1,,1
+11,Affogato,"Kem vani được ""nhấn chìm"" trong Espresso nóng, mang đến trải nghiệm vừa là món tráng miệng vừa là cà phê.",1,,1
+12,Irish Coffee,"Cà phê nóng kết hợp whisky Ireland, đường nâu và kem tươi, tạo nên thức uống ấm áp và độc đáo.",1,,1
+13,Coca-Cola,"Nước ngọt có gas hương vị cola đặc trưng, mang lại cảm giác sảng khoái và giải khát tức thì.",4,39,0
+14,Pepsi,"Nước ngọt có gas với hương vị cola nhẹ nhàng và ngọt ngào, lựa chọn giải khát phổ biến.",4,40,0
+15,7UP,"Nước ngọt có gas hương chanh tươi mát, không màu và không chứa caffeine, thích hợp cho mọi lứa tuổi.",4,40,0
+16,Sprite,"Nước ngọt có gas hương chanh mát lạnh, trong suốt và giải nhiệt hiệu quả.",4,39,0
+17,Fanta Orange,"Nước ngọt có gas hương cam tươi ngọt, màu sắc bắt mắt và hương vị thơm ngon hấp dẫn.",4,39,0
+18,Sting,"Nước tăng lực có gas với hương dâu tây đặc trưng, cung cấp năng lượng và sảng khoái tức thì.",4,40,0
+19,Red Bull,"Nước tăng lực với công thức đặc biệt giúp tăng cường sự tập trung, giảm mệt mỏi và bổ sung năng lượng.",4,41,0
+20,Nước Suối Lavie,"Nước khoáng thiên nhiên tinh khiết từ nguồn suối tự nhiên, tốt cho sức khỏe và giải khát.",4,42,0
+21,Croissant,"Bánh sừng bò bơ xốp thơm, lớp ngoài giòn vàng óng, bên trong mềm mịn theo phong cách Pháp.",3,43,0
+22,Chocolate Muffin,"Bánh muffin sô-cô-la ẩm mềm, thơm ngậy với những hạt chocolate chip béo ngậy.",2,44,0
+23,Butter Cookies,"Bánh quy bơ giòn tan với hương vị vanilla thơm nhẹ, ăn kèm hoàn hảo với cà phê.",3,44,0
+24,Brownie,"Bánh brownie chocolate đậm đà, ẩm mềm và có độ ngọt vừa phải, lý tưởng để ăn kèm.",2,43,0
+25,Cheese Cake,"Bánh phô mai mềm mịn với đế bánh quy giòn, hương vị thanh mát và béo ngậy đặc trưng.",2,44,0
+26,Tiramisu,"Bánh tiramisu Ý kinh điển với lớp mascarpone béo ngậy thấm đẫm hương cà phê espresso thơm lừng.",2,43,0
+27,Croissant Jambon,"Bánh sừng bò nhân thịt jambon và phô mai tan chảy, thơm ngon và no bụng.",3,43,0
+28,Banana Bread,"Bánh mì chuối ẩm mềm, thơm ngọt tự nhiên từ chuối chín, không chứa chất bảo quản.",2,44,0

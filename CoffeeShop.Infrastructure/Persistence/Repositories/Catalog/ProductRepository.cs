@@ -25,7 +25,7 @@ namespace CoffeeShop.Infrastructure.Persistence.Repositories.Catalog
                     ProductName = p.ProductName,
                     Description = p.Description,
                     IsMadeToOrder = p.IsMadeToOrder,
-                    BrandName = p.Brand != null ? p.Brand.BrandName : string.Empty,
+                    BrandName = p.Brand != null ? p.Brand.BrandName : "",
                     CategoryName = p.Category.CategoryName,
                     UnitPrice = p.ProductSku.UnitPrice,
                     Unit = p.ProductSku.Unit,

@@ -33,6 +33,7 @@ public class ProductSeeder : IDataSeeder
                     ProductName = record.ProductName,
                     Description = record.Description,
                     CategoryId = record.CategoryId,
+                    BrandId = record.BrandId,
                     IsMadeToOrder = record.IsMadeToOrder == 1
                 });
             }
@@ -50,6 +51,7 @@ public class ProductSeeder : IDataSeeder
         public string ProductName { get; set; } = string.Empty;
         public string? Description { get; set; }
         public int CategoryId { get; set; }
+        public int? BrandId { get; set; }
         public int IsMadeToOrder { get; set; }
     }
 }

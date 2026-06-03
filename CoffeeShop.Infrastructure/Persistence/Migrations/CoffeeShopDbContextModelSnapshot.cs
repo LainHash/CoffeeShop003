@@ -405,7 +405,10 @@ namespace CoffeeShop.Infrastructure.Persistence.Migrations
             modelBuilder.Entity("CoffeeShop.Domain.Entities.Production.Recipes.RecipeIngredient", b =>
                 {
                     b.Property<int>("RecipeIngredientId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RecipeIngredientId"));
 
                     b.Property<int>("IngredientId")
                         .HasColumnType("int");

@@ -13,9 +13,8 @@ namespace CoffeeShop.Infrastructure.Persistence.Configurations.Production
 
             builder.HasKey(ri => ri.RecipeIngredientId);
 
-            // Turn off IDENTITY generation as it's not identity in the SQL script
             builder.Property(ri => ri.RecipeIngredientId)
-                .ValueGeneratedNever();
+                .UseIdentityColumn();
 
             builder.Property(ri => ri.RecipeId)
                 .IsRequired();

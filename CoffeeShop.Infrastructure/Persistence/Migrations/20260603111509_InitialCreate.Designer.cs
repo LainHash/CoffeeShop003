@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CoffeeShop.Infrastructure.Persistence.Migrations
 {
     [DbContext(typeof(CoffeeShopDbContext))]
-    [Migration("20260602135530_InitialCreate01")]
-    partial class InitialCreate01
+    [Migration("20260603111509_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -408,7 +408,10 @@ namespace CoffeeShop.Infrastructure.Persistence.Migrations
             modelBuilder.Entity("CoffeeShop.Domain.Entities.Production.Recipes.RecipeIngredient", b =>
                 {
                     b.Property<int>("RecipeIngredientId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RecipeIngredientId"));
 
                     b.Property<int>("IngredientId")
                         .HasColumnType("int");

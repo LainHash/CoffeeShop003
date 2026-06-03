@@ -221,7 +221,8 @@ namespace CoffeeShop.Infrastructure.Persistence.Migrations
                 name: "RecipeIngredients",
                 columns: table => new
                 {
-                    RecipeIngredientId = table.Column<int>(type: "int", nullable: false),
+                    RecipeIngredientId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     RecipeId = table.Column<int>(type: "int", nullable: false),
                     IngredientId = table.Column<int>(type: "int", nullable: false),
                     Quantity = table.Column<int>(type: "int", nullable: false)

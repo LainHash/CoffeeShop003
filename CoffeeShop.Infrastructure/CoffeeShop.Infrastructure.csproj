@@ -14,11 +14,16 @@
   <ItemGroup>
     <Folder Include="Identity\" />
     <Folder Include="Persistence\Extensions\" />
-    <Folder Include="Persistence\Migrations\" />
     <Folder Include="Persistence\Seed\Implementation\Catalog\" />
     <Folder Include="Persistence\Seed\Implementation\Inventory\" />
     <Folder Include="Persistence\Seed\Implementation\Misc\" />
     <Folder Include="Persistence\Seed\Implementation\Production\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Persistence\Seed\Data\**\*.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
   <ItemGroup>

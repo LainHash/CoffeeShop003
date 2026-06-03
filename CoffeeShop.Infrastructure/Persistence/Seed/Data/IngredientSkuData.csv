@@ -41,3 +41,6 @@ IngredientSkuId,IngredientId,UnitPrice,Unit,Stock,Status
 40,40,500,g,3000,Active
 41,41,200,g,3000,Active
 42,42,220,g,3000,Active
+43,43,850,g,2000,Active
+44,44,750,g,2000,Active
+45,45,120,ml,500,Active

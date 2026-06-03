@@ -41,3 +41,6 @@ IngredientId,IngredientName,Description,BrandId,CategoryId
 40,Chocolate,,34,19
 41,Chocolate,,35,19
 42,Chocolate,,32,19
+43,Coffee Beans,,36,20
+44,Coffee Beans,,37,20
+45,Vanilla Ice Cream,,38,21

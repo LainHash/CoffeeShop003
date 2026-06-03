@@ -23,7 +23,7 @@ namespace CoffeeShop.Domain.Entities.Catalog
         // Navigation Properties
         public virtual Category Category { get; set; } = null!;
         public virtual Brand? Brand { get; set; }
-        public virtual ProductSku? ProductSku { get; set; }
+        public virtual ProductSku ProductSku { get; set; } = null!;
         public virtual ICollection<Recipe> Recipes { get; set; } = new List<Recipe>();
     }
 }

@@ -24,10 +24,9 @@
     <Folder Include="Features\Catalog\Products\Commands\" />
     <Folder Include="Features\Inventory\" />
     <Folder Include="Features\Misc\" />
-    <Folder Include="Features\Production\" />
     <Folder Include="Features\Inventory\StockTransactions\" />
     <Folder Include="Features\Misc\Images\" />
-    <Folder Include="Features\Production\Recipes\" />
+    <Folder Include="Features\Production\Recipes\Commands\" />
     <Folder Include="Interfaces\Services\" />
   </ItemGroup>
 

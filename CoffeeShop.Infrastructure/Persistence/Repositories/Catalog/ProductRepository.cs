@@ -3,6 +3,9 @@ using CoffeeShop.Application.Features.Catalog.Products.DTOs;
 using CoffeeShop.Application.Features.Misc.Images.DTOs;
 using CoffeeShop.Application.Interfaces.Repositories.Catalog;
 using CoffeeShop.Domain.Common.Constants;
+using CoffeeShop.Domain.Entities.Catalog;
+using CoffeeShop.Domain.Entities.Inventory;
+using CoffeeShop.Domain.Entities.Misc;
 using Microsoft.EntityFrameworkCore;
 
 namespace CoffeeShop.Infrastructure.Persistence.Repositories.Catalog
@@ -108,6 +111,111 @@ namespace CoffeeShop.Infrastructure.Persistence.Repositories.Catalog
             }
             return Result<ProductDTO>.SuccessResponse(product, "Product retrieved successfully.");
 
+        }
+
+        public async Task<Result<ProductDTO>> CreateProductAsync(CreateProductDTO createProductDTO, CancellationToken cancellationToken = default)
+        {
+            using var transacton = await _context.Database.BeginTransactionAsync(cancellationToken);
+            try
+            {
+                var product = new Product
+                {
+                    ProductName = createProductDTO.ProductName,
+                    Description = createProductDTO.Description ?? string.Empty,
+                    IsMadeToOrder = createProductDTO.IsMadeToOrder,
+                    CategoryId = await GetCategoryId(createProductDTO.CategoryName),
+                    BrandId = await GetBrandId(createProductDTO.BrandName),
+                };
+                _context.Products.Add(product);
+                await _context.SaveChangesAsync(cancellationToken);
+
+                var productSku = new ProductSku
+                {
+                    ProductId = product.ProductId,
+                    UnitPrice = createProductDTO.UnitPrice,
+                    Unit = createProductDTO.Unit,
+                    Stock = createProductDTO.Stock,
+                    Status = StockStatus.Active,
+                };
+                _context.ProductSkus.Add(productSku);
+                await _context.SaveChangesAsync(cancellationToken);
+
+                var images = createProductDTO.Images.Select(i => new Image
+                {
+                    ReferenceId = product.ProductId,
+                    Type = ReferenceType.Product,
+                    ImageUrl = i.ImageUrl,
+                    IsPrimary = i.IsPrimary
+                }).ToList();
+                _context.Images.AddRange(images);
+                await _context.SaveChangesAsync(cancellationToken);
+
+                await transacton.CommitAsync(cancellationToken);
+                var productDTO = new ProductDTO
+                {
+                    PublicId = product.PublicId,
+                    ProductName = product.ProductName,
+                    Description = product.Description,
+                    IsMadeToOrder = product.IsMadeToOrder,
+                    BrandName = createProductDTO.BrandName ?? string.Empty,
+                    CategoryName = createProductDTO.CategoryName,
+                    Images = createProductDTO.Images.Select(i => new ImageDTO
+                    {
+                        ImageUrl = i.ImageUrl,
+                        IsPrimary = i.IsPrimary
+                    }).ToList(),
+                    UnitPrice = productSku.UnitPrice,
+                    Unit = productSku.Unit,
+                    Stock = productSku.Stock,
+                    Status = productSku.Status,
+                    CreatedAt = product.CreatedAt,
+                    UpdatedAt = product.UpdatedAt,
+                    IsDeleted = product.IsDeleted
+                };
+                return Result<ProductDTO>.SuccessResponse(productDTO, "Product created successfully.");
+            }
+            catch (Exception ex)
+            {
+                await transacton.RollbackAsync(cancellationToken);
+                return Result<ProductDTO>.ErrorResponse($"An error occurred while creating the product: {ex.Message}");
+            }
+            throw new NotImplementedException();
+        }
+
+        private async Task<int> GetCategoryId(string name)
+        {
+            if(string.IsNullOrEmpty(name))
+            {
+                throw new ArgumentException("Category name cannot be null or empty.");
+            }
+            var category = await _context.Categories
+                .FirstOrDefaultAsync(c => c.CategoryName == name);
+            if (category == null)
+            {
+                var newCategory = new Category { CategoryName = name };
+                _context.Categories.Add(newCategory);
+                await _context.SaveChangesAsync();
+                return newCategory.CategoryId;
+            }
+            return category.CategoryId;
+        }
+
+        private async Task<int?> GetBrandId(string? name)
+        {
+            if (string.IsNullOrEmpty(name))
+            {
+                return null;
+            }
+            var brand = await _context.Brands
+                .FirstOrDefaultAsync(b => b.BrandName == name);
+            if (brand == null)
+            {
+                var newBrand = new Brand { BrandName = name };
+                _context.Brands.Add(newBrand);
+                await _context.SaveChangesAsync();
+                return newBrand.BrandId;
+            }
+            return brand.BrandId;
         }
     }
 }

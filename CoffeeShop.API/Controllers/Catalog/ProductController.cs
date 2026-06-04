@@ -1,4 +1,6 @@
-﻿using CoffeeShop.Application.Features.Catalog.Products.Queries;
+﻿using CoffeeShop.Application.Features.Catalog.Products.Commands;
+using CoffeeShop.Application.Features.Catalog.Products.DTOs;
+using CoffeeShop.Application.Features.Catalog.Products.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -26,12 +28,23 @@ namespace CoffeeShop.API.Controllers.Catalog
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetProductByPublicId(Guid id)
+        public async Task<IActionResult> GetProductByPublicId([FromRoute] Guid id)
         {
             var result = await _mediator.Send(new GetProductByPublicIdQuery(id));
             if (!result.IsSuccess)
             {
                 return NotFound(result.Message);
+            }
+            return Ok(result);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateProduct([FromBody] CreateProductDTO createProductDTO)
+        {
+            var result = await _mediator.Send(new CreateProductCommand(createProductDTO));
+            if (!result.IsSuccess)
+            {
+                return BadRequest(result.Message);
             }
             return Ok(result);
         }

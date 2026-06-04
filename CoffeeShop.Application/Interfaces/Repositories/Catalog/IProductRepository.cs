@@ -7,5 +7,6 @@ namespace CoffeeShop.Application.Interfaces.Repositories.Catalog
     {
         Task<Result<List<ProductDTO>>> GetProductsAsync(CancellationToken cancellationToken = default);
         Task<Result<ProductDTO>> GetProductByPublicIdAsync(Guid id, CancellationToken cancellationToken = default);
+        Task<Result<ProductDTO>> CreateProductAsync(CreateProductDTO createProductDTO, CancellationToken cancellationToken = default);
     }
 }

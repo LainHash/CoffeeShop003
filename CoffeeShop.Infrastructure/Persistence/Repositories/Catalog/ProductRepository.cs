@@ -49,7 +49,8 @@ namespace CoffeeShop.Infrastructure.Persistence.Repositories.Catalog
                         new ImageDTO
                         {
                             ImageUrl = p.Image.ImageUrl,
-                            IsPrimary = p.Image.IsPrimary
+                            IsPrimary = p.Image.IsPrimary,
+                            CreatedAt = p.Image.CreatedAt
                         }
                     },
                     UnitPrice = p.Product.ProductSku.UnitPrice,
@@ -96,7 +97,8 @@ namespace CoffeeShop.Infrastructure.Persistence.Repositories.Catalog
                         new ImageDTO
                         {
                             ImageUrl = p.Image.ImageUrl,
-                            IsPrimary = p.Image.IsPrimary
+                            IsPrimary = p.Image.IsPrimary,
+                            CreatedAt = p.Image.CreatedAt
                         }
                     },
                     UnitPrice = p.Product.ProductSku.UnitPrice,
@@ -239,7 +241,8 @@ namespace CoffeeShop.Infrastructure.Persistence.Repositories.Catalog
                     new ImageDTO
                     {
                         ImageUrl = product.Image.ImageUrl,
-                        IsPrimary = product.Image.IsPrimary
+                        IsPrimary = product.Image.IsPrimary,
+                        CreatedAt = product.Image.CreatedAt
                     }
                 },
                 UnitPrice = product.Product.ProductSku.UnitPrice,

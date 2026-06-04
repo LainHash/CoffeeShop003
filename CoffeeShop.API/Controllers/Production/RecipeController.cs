@@ -25,10 +25,6 @@ namespace CoffeeShop.API.Controllers.Production
         public async Task<IActionResult> GetRecipe(Guid id)
         {
             var result = await _mediator.Send(new GetRecipeByPublicIdQuery(id));
-            if (!result.IsSuccess)
-            {
-                return StatusCode(result.StatusCode, result);
-            }
             return StatusCode(result.StatusCode, result);
         }
     }

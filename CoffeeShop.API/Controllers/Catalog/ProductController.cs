@@ -30,10 +30,6 @@ namespace CoffeeShop.API.Controllers.Catalog
         public async Task<IActionResult> GetProductByPublicId([FromRoute] Guid id)
         {
             var result = await _mediator.Send(new GetProductByPublicIdQuery(id));
-            if (!result.IsSuccess)
-            {
-                return StatusCode(result.StatusCode, result);
-            }
             return StatusCode(result.StatusCode, result);
         }
 
@@ -41,21 +37,13 @@ namespace CoffeeShop.API.Controllers.Catalog
         public async Task<IActionResult> CreateProduct([FromBody] CreateProductDTO createProductDTO)
         {
             var result = await _mediator.Send(new CreateProductCommand(createProductDTO));
-            if (!result.IsSuccess)
-            {
-                return StatusCode(result.StatusCode, result);
-            }
             return StatusCode(result.StatusCode, result);
         }
 
-        [HttpPost("{id}")]
+        [HttpPut("{id}")]
         public async Task<IActionResult> UpdateProduct([FromRoute] Guid id, [FromBody] UpdateProductDTO updateProductDTO)
         {
             var result = await _mediator.Send(new UpdateProductCommand(id, updateProductDTO));
-            if (!result.IsSuccess)
-            {
-                return StatusCode(result.StatusCode, result);
-            }
             return StatusCode(result.StatusCode, result);
         }
 
@@ -63,10 +51,6 @@ namespace CoffeeShop.API.Controllers.Catalog
         public async Task<IActionResult> DeleteProduct([FromRoute] Guid id)
         {
             var result = await _mediator.Send(new DeleteProductCommand(id));
-            if (!result.IsSuccess)
-            {
-                return StatusCode(result.StatusCode, result);
-            }
             return StatusCode(result.StatusCode, result);
         }
 
@@ -74,10 +58,6 @@ namespace CoffeeShop.API.Controllers.Catalog
         public async Task<IActionResult> RestoreProduct([FromRoute] Guid id)
         {
             var result = await _mediator.Send(new RestoreProductCommand(id));
-            if (!result.IsSuccess)
-            {
-                return StatusCode(result.StatusCode, result);
-            }
             return StatusCode(result.StatusCode, result);
         }
     }

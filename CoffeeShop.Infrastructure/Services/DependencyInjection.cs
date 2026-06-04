@@ -1,7 +1,9 @@
 using CoffeeShop.Application.Interfaces.Repositories.Catalog;
+using CoffeeShop.Application.Interfaces.Repositories.Misc;
 using CoffeeShop.Application.Interfaces.Repositories.Production;
 using CoffeeShop.Infrastructure.Persistence;
 using CoffeeShop.Infrastructure.Persistence.Repositories.Catalog;
+using CoffeeShop.Infrastructure.Persistence.Repositories.Misc;
 using CoffeeShop.Infrastructure.Persistence.Repositories.Production;
 using CoffeeShop.Infrastructure.Persistence.Seed;
 using CoffeeShop.Infrastructure.Persistence.Seed.Implementation.Catalog;
@@ -42,6 +44,7 @@ namespace CoffeeShop.Infrastructure.Services
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<IIngredientRepository, IngredientRepository>();
             services.AddScoped<IRecipeRepository, RecipeRepository>();
+            services.AddScoped<IImageRepository, ImageRepository>();
 
             return services;
         }

@@ -4,5 +4,7 @@
     {
         public string ImageUrl { get; set; } = null!;
         public bool IsPrimary { get; set; }
+
+        public DateTime CreatedAt { get; set; }
     }
 }

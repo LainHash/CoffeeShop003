@@ -25,7 +25,6 @@
     <Folder Include="Features\Inventory\" />
     <Folder Include="Features\Inventory\StockTransactions\" />
     <Folder Include="Features\Misc\Images\Commands\" />
-    <Folder Include="Features\Misc\Images\Queries\" />
     <Folder Include="Features\Production\Recipes\Commands\" />
     <Folder Include="Interfaces\Services\" />
   </ItemGroup>

@@ -63,7 +63,8 @@ namespace CoffeeShop.Infrastructure.Persistence.Repositories.Catalog
             return Result<List<ProductDTO>>.SuccessResponse(products, "Products retrieved successfully.");
         }
 
-        public async Task<Result<ProductDTO>> GetProductByPublicIdAsync(Guid id, CancellationToken cancellationToken = default)
+        public async Task<Result<ProductDTO>> GetProductByPublicIdAsync(Guid id, 
+                                                                        CancellationToken cancellationToken = default)
         {
             var query = _context.Products
                 .Include(p => p.Category)
@@ -113,7 +114,8 @@ namespace CoffeeShop.Infrastructure.Persistence.Repositories.Catalog
 
         }
 
-        public async Task<Result<ProductDTO>> CreateProductAsync(CreateProductDTO createProductDTO, CancellationToken cancellationToken = default)
+        public async Task<Result<ProductDTO>> CreateProductAsync(CreateProductDTO createProductDTO, 
+                                                                    CancellationToken cancellationToken = default)
         {
             using var transacton = await _context.Database.BeginTransactionAsync(cancellationToken);
             try
@@ -182,6 +184,70 @@ namespace CoffeeShop.Infrastructure.Persistence.Repositories.Catalog
             throw new NotImplementedException();
         }
 
+        public async Task<Result<ProductDTO>> UpdateProductAsync(Guid id, UpdateProductDTO updateProductDTO, 
+                                                                    CancellationToken cancellationToken = default)
+        {
+            var query = _context.Products
+                .Include(p => p.Category)
+                .Include(p => p.Brand)
+                .Include(p => p.ProductSku)
+                .Join(_context.Images,
+                p => p.ProductId,
+                i => i.ReferenceId,
+                (p, i) => new
+                {
+                    Product = p,
+                    Image = i
+                })
+                .Where(x => x.Product.PublicId == id && x.Image.Type == ReferenceType.Product);
+
+            var product = await query.FirstOrDefaultAsync(cancellationToken);
+            if (product == null) 
+            {
+                return Result<ProductDTO>.ErrorResponse("Product not found.");
+            }
+
+            product.Product.ProductName = updateProductDTO.ProductName;
+            product.Product.Description = updateProductDTO.Description ?? string.Empty;
+            product.Product.IsMadeToOrder = updateProductDTO.IsMadeToOrder;
+
+            product.Product.CategoryId = await GetCategoryId(updateProductDTO.CategoryName);
+            product.Product.BrandId = await GetBrandId(updateProductDTO.BrandName);
+
+            product.Product.ProductSku.UnitPrice = updateProductDTO.UnitPrice;
+            product.Product.ProductSku.Unit = updateProductDTO.Unit;
+            product.Product.ProductSku.Stock = updateProductDTO.Stock;
+
+            product.Product.UpdatedAt = DateTime.Now;
+
+            var dto = new ProductDTO
+            {
+                PublicId = product.Product.PublicId,
+                ProductName = product.Product.ProductName,
+                Description = product.Product.Description,
+                IsMadeToOrder = product.Product.IsMadeToOrder,
+                BrandName = product.Product.Brand != null ? product.Product.Brand.BrandName : string.Empty,
+                CategoryName = product.Product.Category.CategoryName,
+                Images = new List<ImageDTO>
+                {
+                    new ImageDTO
+                    {
+                        ImageUrl = product.Image.ImageUrl,
+                        IsPrimary = product.Image.IsPrimary
+                    }
+                },
+                UnitPrice = product.Product.ProductSku.UnitPrice,
+                Unit = product.Product.ProductSku.Unit,
+                Stock = product.Product.ProductSku.Stock,
+                Status = product.Product.ProductSku.Status,
+                CreatedAt = product.Product.CreatedAt,
+                UpdatedAt = product.Product.UpdatedAt,
+                IsDeleted = product.Product.IsDeleted
+            };
+            await _context.SaveChangesAsync(cancellationToken);
+            return Result<ProductDTO>.SuccessResponse(dto, "Product updated successfully.");
+        }
+
         private async Task<int> GetCategoryId(string name)
         {
             if(string.IsNullOrEmpty(name))
@@ -217,5 +283,7 @@ namespace CoffeeShop.Infrastructure.Persistence.Repositories.Catalog
             }
             return brand.BrandId;
         }
+
+        
     }
 }

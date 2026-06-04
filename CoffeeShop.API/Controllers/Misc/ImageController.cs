@@ -13,6 +13,7 @@ namespace CoffeeShop.API.Controllers.Misc
             _mediator = mediator;
         }
 
+        [HttpGet]
         public async Task<IActionResult> GetImages()
         {
             var result = await _mediator.Send(new Application.Features.Misc.Images.Queries.GetImagesQuery());

@@ -48,5 +48,16 @@ namespace CoffeeShop.API.Controllers.Catalog
             }
             return Ok(result);
         }
+
+        [HttpPost("{id}")]
+        public async Task<IActionResult> UpdateProduct([FromRoute] Guid id, [FromBody] UpdateProductDTO updateProductDTO)
+        {
+            var result = await _mediator.Send(new UpdateProductCommand(id, updateProductDTO));
+            if (!result.IsSuccess)
+            {
+                return BadRequest(result.Message);
+            }
+            return Ok(result);
+        }
     }
 }

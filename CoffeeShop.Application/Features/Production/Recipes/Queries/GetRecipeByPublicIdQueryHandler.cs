@@ -14,7 +14,7 @@ namespace CoffeeShop.Application.Features.Production.Recipes.Queries
         }
         public async Task<Result<RecipeDTO>> Handle(GetRecipeByPublicIdQuery request, CancellationToken cancellationToken)
         {
-            return await _recipeRepository.GetRecipeByPublicIdAsync(request.Id);
+            return await _recipeRepository.GetRecipeByPublicIdAsync(request.Id, cancellationToken);
         }
     }
 }

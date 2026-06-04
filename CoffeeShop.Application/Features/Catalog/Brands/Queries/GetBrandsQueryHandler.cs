@@ -14,7 +14,7 @@ namespace CoffeeShop.Application.Features.Catalog.Brands.Queries
         }
         public async Task<Result<List<BrandDTO>>> Handle(GetBrandsQuery request, CancellationToken cancellationToken)
         {
-            return await _brandRepository.GetBrandsAsync();
+            return await _brandRepository.GetBrandsAsync(cancellationToken);
         }
     }
 }

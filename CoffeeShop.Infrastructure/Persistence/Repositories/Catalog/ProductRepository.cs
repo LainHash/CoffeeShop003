@@ -13,7 +13,7 @@ namespace CoffeeShop.Infrastructure.Persistence.Repositories.Catalog
             _context = context;
         }
 
-        public async Task<Result<List<ProductDTO>>> GetProductsAsync()
+        public async Task<Result<List<ProductDTO>>> GetProductsAsync(CancellationToken cancellationToken = default)
         {
             var products = await _context.Products
                 .Include(p => p.Category)
@@ -35,15 +35,17 @@ namespace CoffeeShop.Infrastructure.Persistence.Repositories.Catalog
                     UpdatedAt = p.UpdatedAt,
                     IsDeleted = p.IsDeleted
                 })
-                .ToListAsync();
+                .ToListAsync(cancellationToken);
             return Result<List<ProductDTO>>.SuccessResponse(products, "Products retrieved successfully.");
         }
 
-        public async Task<Result<ProductDTO>> GetProductByPublicIdAsync(Guid publicId)
+        public async Task<Result<ProductDTO>> GetProductByPublicIdAsync(Guid publicId, CancellationToken cancellationToken = default)
         {
             var product = await _context.Products
                 .Include(p => p.Category)
                 .Include(p => p.Brand)
+                .Include(p => p.ProductSku)
+                .Where(p => p.PublicId == publicId)
                 .Select(p => new ProductDTO
                 {
                     PublicId = p.PublicId,
@@ -60,7 +62,7 @@ namespace CoffeeShop.Infrastructure.Persistence.Repositories.Catalog
                     UpdatedAt = p.UpdatedAt,
                     IsDeleted = p.IsDeleted
                 })
-                .FirstOrDefaultAsync(p => p.PublicId == publicId);
+                .FirstOrDefaultAsync(cancellationToken);
             if (product == null)
             {
                 return Result<ProductDTO>.ErrorResponse("Product not found.");

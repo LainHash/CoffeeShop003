@@ -13,7 +13,7 @@ namespace CoffeeShop.Infrastructure.Persistence.Repositories.Catalog
             _context = context;
         }
 
-        public async Task<Result<List<CategoryDTO>>> GetCategoriesAsync()
+        public async Task<Result<List<CategoryDTO>>> GetCategoriesAsync(CancellationToken cancellationToken = default)
         {
             var categories = await _context.Categories
                 .Select(c => new CategoryDTO
@@ -21,7 +21,7 @@ namespace CoffeeShop.Infrastructure.Persistence.Repositories.Catalog
                     CategoryName = c.CategoryName,
                     Description = c.Description
                 })
-                .ToListAsync();
+                .ToListAsync(cancellationToken);
             return Result<List<CategoryDTO>>.SuccessResponse(categories, "Categories retrieved successfully.");
         }
     }

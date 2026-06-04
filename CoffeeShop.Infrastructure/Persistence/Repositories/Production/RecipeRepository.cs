@@ -13,7 +13,7 @@ namespace CoffeeShop.Infrastructure.Persistence.Repositories.Production
             _context = context;
         }
 
-        public async Task<Result<List<RecipeDTO>>> GetRecipesAsync()
+        public async Task<Result<List<RecipeDTO>>> GetRecipesAsync(CancellationToken cancellationToken = default)
         {
             var query = _context.Recipes
                 .Include(r => r.Product)
@@ -53,11 +53,11 @@ namespace CoffeeShop.Infrastructure.Persistence.Repositories.Production
                     UpdatedAt = r.UpdatedAt,
                     IsDeleted = r.IsDeleted
                 })
-                .ToListAsync();
+                .ToListAsync(cancellationToken);
             return Result<List<RecipeDTO>>.SuccessResponse(recipes, "Recipes retrieved successfully.");
         }
 
-        public async Task<Result<RecipeDTO>> GetRecipeByPublicIdAsync(Guid id)
+        public async Task<Result<RecipeDTO>> GetRecipeByPublicIdAsync(Guid id, CancellationToken cancellationToken = default)
         {
             var query = _context.Recipes
                 .Include(r => r.Product)
@@ -97,7 +97,7 @@ namespace CoffeeShop.Infrastructure.Persistence.Repositories.Production
                     UpdatedAt = r.UpdatedAt,
                     IsDeleted = r.IsDeleted
                 })
-                .FirstOrDefaultAsync();
+                .FirstOrDefaultAsync(cancellationToken);
             if (recipe == null)
             {
                 return Result<RecipeDTO>.ErrorResponse("Recipe not found.");

@@ -5,7 +5,7 @@ namespace CoffeeShop.Application.Interfaces.Repositories.Catalog
 {
     public interface IIngredientRepository
     {
-        Task<Result<List<IngredientDTO>>> GetIngredientsAsync();
-        Task<Result<IngredientDTO>> GetIngredientByPublicIdAsync(Guid publicId);
+        Task<Result<List<IngredientDTO>>> GetIngredientsAsync(CancellationToken cancellationToken = default);
+        Task<Result<IngredientDTO>> GetIngredientByPublicIdAsync(Guid publicId, CancellationToken cancellationToken = default);
     }
 }

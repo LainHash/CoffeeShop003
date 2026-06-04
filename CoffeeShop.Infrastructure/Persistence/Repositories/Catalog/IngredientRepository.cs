@@ -13,7 +13,7 @@ namespace CoffeeShop.Infrastructure.Persistence.Repositories.Catalog
             _context = context;
         }
 
-        public async Task<Result<List<IngredientDTO>>> GetIngredientsAsync()
+        public async Task<Result<List<IngredientDTO>>> GetIngredientsAsync(CancellationToken cancellationToken = default)
         {
             var ingredients = await _context.Ingredients
                 .Include(i => i.Brand)
@@ -35,11 +35,11 @@ namespace CoffeeShop.Infrastructure.Persistence.Repositories.Catalog
                     UpdatedAt = i.UpdatedAt,
                     IsDeleted = i.IsDeleted
                 })
-                .ToListAsync();
+                .ToListAsync(cancellationToken);
             return Result<List<IngredientDTO>>.SuccessResponse(ingredients, "Ingredients retrieved successfully.");
         }
 
-        public async Task<Result<IngredientDTO>> GetIngredientByPublicIdAsync(Guid publicId)
+        public async Task<Result<IngredientDTO>> GetIngredientByPublicIdAsync(Guid publicId, CancellationToken cancellationToken = default)
         {
             var ingredient = await _context.Ingredients
                 .Include(i => i.Brand)
@@ -61,7 +61,7 @@ namespace CoffeeShop.Infrastructure.Persistence.Repositories.Catalog
                     UpdatedAt = i.UpdatedAt,
                     IsDeleted = i.IsDeleted
                 })
-                .FirstOrDefaultAsync();
+                .FirstOrDefaultAsync(cancellationToken);
             if (ingredient == null)
             {
                 return Result<IngredientDTO>.ErrorResponse("Ingredient not found.");

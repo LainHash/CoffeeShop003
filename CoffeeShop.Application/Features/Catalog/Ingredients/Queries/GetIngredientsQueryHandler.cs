@@ -14,7 +14,7 @@ namespace CoffeeShop.Application.Features.Catalog.Ingredients.Queries
         }
         public async Task<Result<List<IngredientDTO>>> Handle(GetIngredientsQuery request, CancellationToken cancellationToken)
         {
-            return await _ingredientRepository.GetIngredientsAsync();
+            return await _ingredientRepository.GetIngredientsAsync(cancellationToken);
         }
     }
 }

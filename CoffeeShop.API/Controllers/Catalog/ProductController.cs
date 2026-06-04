@@ -59,5 +59,27 @@ namespace CoffeeShop.API.Controllers.Catalog
             }
             return Ok(result);
         }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteProduct([FromRoute] Guid id)
+        {
+            var result = await _mediator.Send(new DeleteProductCommand(id));
+            if (!result.IsSuccess)
+            {
+                return BadRequest(result.Message);
+            }
+            return Ok(result);
+        }
+
+        [HttpPatch("{id}/restore")]
+        public async Task<IActionResult> RestoreProduct([FromRoute] Guid id)
+        {
+            var result = await _mediator.Send(new RestoreProductCommand(id));
+            if (!result.IsSuccess)
+            {
+                return BadRequest(result.Message);
+            }
+            return Ok(result);
+        }
     }
 }

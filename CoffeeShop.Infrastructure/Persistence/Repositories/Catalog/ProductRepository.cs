@@ -63,7 +63,7 @@ namespace CoffeeShop.Infrastructure.Persistence.Repositories.Catalog
             return Result<List<ProductDTO>>.SuccessResponse(products, "Products retrieved successfully.");
         }
 
-        public async Task<Result<ProductDTO>> GetProductByPublicIdAsync(Guid id, 
+        public async Task<Result<ProductDTO>> GetProductByPublicIdAsync(Guid id,
                                                                         CancellationToken cancellationToken = default)
         {
             var query = _context.Products
@@ -114,7 +114,7 @@ namespace CoffeeShop.Infrastructure.Persistence.Repositories.Catalog
 
         }
 
-        public async Task<Result<ProductDTO>> CreateProductAsync(CreateProductDTO createProductDTO, 
+        public async Task<Result<ProductDTO>> CreateProductAsync(CreateProductDTO createProductDTO,
                                                                     CancellationToken cancellationToken = default)
         {
             using var transacton = await _context.Database.BeginTransactionAsync(cancellationToken);
@@ -184,7 +184,7 @@ namespace CoffeeShop.Infrastructure.Persistence.Repositories.Catalog
             throw new NotImplementedException();
         }
 
-        public async Task<Result<ProductDTO>> UpdateProductAsync(Guid id, UpdateProductDTO updateProductDTO, 
+        public async Task<Result<ProductDTO>> UpdateProductAsync(Guid id, UpdateProductDTO updateProductDTO,
                                                                     CancellationToken cancellationToken = default)
         {
             var query = _context.Products
@@ -202,7 +202,7 @@ namespace CoffeeShop.Infrastructure.Persistence.Repositories.Catalog
                 .Where(x => x.Product.PublicId == id && x.Image.Type == ReferenceType.Product);
 
             var product = await query.FirstOrDefaultAsync(cancellationToken);
-            if (product == null) 
+            if (product == null)
             {
                 return Result<ProductDTO>.ErrorResponse("Product not found.");
             }
@@ -248,9 +248,53 @@ namespace CoffeeShop.Infrastructure.Persistence.Repositories.Catalog
             return Result<ProductDTO>.SuccessResponse(dto, "Product updated successfully.");
         }
 
+        public async Task<Result> DeleteProductAsync(Guid id,
+                                                                    CancellationToken cancellationToken = default)
+        {
+            var product = await _context.Products
+                .FirstOrDefaultAsync(p => p.PublicId == id, cancellationToken);
+            if (product == null)
+            {
+                return Result.ErrorResponse("Product not found.");
+            }
+            if (product.IsDeleted)
+            {
+                return Result.ErrorResponse("Product is already deleted.");
+            }
+
+            product.IsDeleted = true;
+            product.UpdatedAt = DateTime.Now;
+
+            await _context.SaveChangesAsync(cancellationToken);
+
+            return Result.SuccessResponse("Product deleted successfully.");
+        }
+
+        public async Task<Result> RestoreProductAsync(Guid id,
+                                                                    CancellationToken cancellationToken = default)
+        {
+            var product = await _context.Products
+                .FirstOrDefaultAsync(p => p.PublicId == id, cancellationToken);
+
+            if (product == null)
+            {
+                return Result.ErrorResponse("Product not found.");
+            }
+            if (!product.IsDeleted)
+            {
+                return Result.ErrorResponse("Product is not deleted.");
+            }
+
+            product.IsDeleted = false;
+            product.UpdatedAt = DateTime.Now;
+
+            await _context.SaveChangesAsync(cancellationToken);
+            return Result.SuccessResponse("Product restored successfully.");
+        }
+
         private async Task<int> GetCategoryId(string name)
         {
-            if(string.IsNullOrEmpty(name))
+            if (string.IsNullOrEmpty(name))
             {
                 throw new ArgumentException("Category name cannot be null or empty.");
             }
@@ -284,6 +328,6 @@ namespace CoffeeShop.Infrastructure.Persistence.Repositories.Catalog
             return brand.BrandId;
         }
 
-        
+
     }
 }

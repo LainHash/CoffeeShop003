@@ -1,4 +1,4 @@
-ProductId,ProductName,Description,CategoryId,BrandId,IsMadeToOrder
+﻿ProductId,ProductName,Description,CategoryId,BrandId,IsMadeToOrder
 1,Espresso,"Cà phê nguyên chất được chiết xuất dưới áp suất cao, mang hương vị đậm đà và lớp crema đặc trưng.",1,,1
 2,Doppio,"Hai shot Espresso kết hợp, cho hương vị mạnh mẽ và hàm lượng caffeine cao hơn Espresso thông thường.",1,,1
 3,Americano,"Espresso pha loãng với nước nóng, giữ hương thơm cà phê nhưng dễ uống và nhẹ hơn.",1,,1
@@ -19,11 +19,11 @@ ProductId,ProductName,Description,CategoryId,BrandId,IsMadeToOrder
 18,Sting,"Nước tăng lực có gas với hương dâu tây đặc trưng, cung cấp năng lượng và sảng khoái tức thì.",4,40,0
 19,Red Bull,"Nước tăng lực với công thức đặc biệt giúp tăng cường sự tập trung, giảm mệt mỏi và bổ sung năng lượng.",4,41,0
 20,Nước Suối Lavie,"Nước khoáng thiên nhiên tinh khiết từ nguồn suối tự nhiên, tốt cho sức khỏe và giải khát.",4,42,0
-21,Croissant,"Bánh sừng bò bơ xốp thơm, lớp ngoài giòn vàng óng, bên trong mềm mịn theo phong cách Pháp.",3,43,0
-22,Chocolate Muffin,"Bánh muffin sô-cô-la ẩm mềm, thơm ngậy với những hạt chocolate chip béo ngậy.",2,44,0
-23,Butter Cookies,"Bánh quy bơ giòn tan với hương vị vanilla thơm nhẹ, ăn kèm hoàn hảo với cà phê.",3,44,0
-24,Brownie,"Bánh brownie chocolate đậm đà, ẩm mềm và có độ ngọt vừa phải, lý tưởng để ăn kèm.",2,43,0
-25,Cheese Cake,"Bánh phô mai mềm mịn với đế bánh quy giòn, hương vị thanh mát và béo ngậy đặc trưng.",2,44,0
-26,Tiramisu,"Bánh tiramisu Ý kinh điển với lớp mascarpone béo ngậy thấm đẫm hương cà phê espresso thơm lừng.",2,43,0
-27,Croissant Jambon,"Bánh sừng bò nhân thịt jambon và phô mai tan chảy, thơm ngon và no bụng.",3,43,0
-28,Banana Bread,"Bánh mì chuối ẩm mềm, thơm ngọt tự nhiên từ chuối chín, không chứa chất bảo quản.",2,44,0
+21,Croissant,"Bánh sừng bò bơ xốp thơm, lớp ngoài giòn vàng óng, bên trong mềm mịn theo phong cách Pháp.",3,,1
+22,Chocolate Muffin,"Bánh muffin sô-cô-la ẩm mềm, thơm ngậy với những hạt chocolate chip béo ngậy.",2,,1
+23,Butter Cookies,"Bánh quy bơ giòn tan với hương vị vanilla thơm nhẹ, ăn kèm hoàn hảo với cà phê.",3,,1
+24,Brownie,"Bánh brownie chocolate đậm đà, ẩm mềm và có độ ngọt vừa phải, lý tưởng để ăn kèm.",2,,1
+25,Cheese Cake,"Bánh phô mai mềm mịn với đế bánh quy giòn, hương vị thanh mát và béo ngậy đặc trưng.",2,,1
+26,Tiramisu,Bánh tiramisu Ý kinh điển với lớp mascarpone béo ngậy thấm đẫm hương cà phê espresso thơm lừng.,2,,1
+27,Croissant Jambon,"Bánh sừng bò nhân thịt jambon và phô mai tan chảy, thơm ngon và no bụng.",3,,1
+28,Banana Bread,"Bánh mì chuối ẩm mềm, thơm ngọt tự nhiên từ chuối chín, không chứa chất bảo quản.",2,,1

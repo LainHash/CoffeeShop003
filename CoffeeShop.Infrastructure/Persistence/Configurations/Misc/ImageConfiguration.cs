@@ -12,6 +12,8 @@ namespace CoffeeShop.Infrastructure.Persistence.Configurations.Misc
 
             builder.HasKey(i => i.ImageId);
 
+            builder.HasIndex(i => new { i.ReferenceId, i.Type, i.IsPrimary });
+
             builder.Property(i => i.ImageId)
                 .UseIdentityColumn();
 

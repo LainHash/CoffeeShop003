@@ -20,18 +20,16 @@ namespace CoffeeShop.API.Controllers.Catalog
         public async Task<IActionResult> GetIngredients()
         {
             var result = await _mediator.Send(new GetIngredientsQuery());
-            if (result.IsSuccess)
-                return Ok(result);
-            return BadRequest(result);
+            if (!result.IsSuccess)
+                return StatusCode(result.StatusCode, result);
+            return StatusCode(result.StatusCode, result);
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetIngredientByPublicId(Guid id)
         {
             var result = await _mediator.Send(new GetIngredientByPublicIdQuery(id));
-            if (result.IsSuccess)
-                return Ok(result);
-            return BadRequest(result);
+            return StatusCode(result.StatusCode, result);
         }
     }
 }

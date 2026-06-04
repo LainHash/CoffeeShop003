@@ -3,7 +3,7 @@ using CoffeeShop.Application.Features.Catalog.Products.DTOs;
 using CoffeeShop.Application.Interfaces.Repositories.Catalog;
 using MediatR;
 
-namespace CoffeeShop.Application.Features.Catalog.Products.Commands
+namespace CoffeeShop.Application.Features.Catalog.Products.Commands.Delete
 {
     public class DeleteProductCommandHandler : IRequestHandler<DeleteProductCommand, Result>
     {

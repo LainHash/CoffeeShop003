@@ -2,6 +2,7 @@
 using CoffeeShop.Application.Features.Catalog.Ingredients.DTOs;
 using CoffeeShop.Application.Interfaces.Repositories.Catalog;
 using Microsoft.EntityFrameworkCore;
+using System.Net;
 
 namespace CoffeeShop.Infrastructure.Persistence.Repositories.Catalog
 {
@@ -36,7 +37,8 @@ namespace CoffeeShop.Infrastructure.Persistence.Repositories.Catalog
                     IsDeleted = i.IsDeleted
                 })
                 .ToListAsync(cancellationToken);
-            return Result<List<IngredientDTO>>.SuccessResponse(ingredients, "Ingredients retrieved successfully.");
+            return Result<List<IngredientDTO>>
+                .SuccessResponse(ingredients, "Ingredients retrieved successfully.", HttpStatusCode.OK);
         }
 
         public async Task<Result<IngredientDTO>> GetIngredientByPublicIdAsync(Guid publicId, CancellationToken cancellationToken = default)
@@ -64,9 +66,11 @@ namespace CoffeeShop.Infrastructure.Persistence.Repositories.Catalog
                 .FirstOrDefaultAsync(cancellationToken);
             if (ingredient == null)
             {
-                return Result<IngredientDTO>.ErrorResponse("Ingredient not found.");
+                return Result<IngredientDTO>
+                    .ErrorResponse("Ingredient not found.", HttpStatusCode.NotFound);
             }
-            return Result<IngredientDTO>.SuccessResponse(ingredient, "Ingredient retrieved successfully.");
+            return Result<IngredientDTO>
+                .SuccessResponse(ingredient, "Ingredient retrieved successfully.", HttpStatusCode.OK);
         }
     }
 }

@@ -22,7 +22,8 @@ namespace CoffeeShop.Infrastructure.Persistence.Repositories.Catalog
                     Description = c.Description
                 })
                 .ToListAsync(cancellationToken);
-            return Result<List<CategoryDTO>>.SuccessResponse(categories, "Categories retrieved successfully.");
+            return Result<List<CategoryDTO>>
+                .SuccessResponse(categories, "Categories retrieved successfully.");
         }
     }
 }

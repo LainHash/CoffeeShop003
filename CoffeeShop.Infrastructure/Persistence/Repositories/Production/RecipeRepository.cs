@@ -2,6 +2,7 @@
 using CoffeeShop.Application.Features.Production.Recipes.DTOs;
 using CoffeeShop.Application.Interfaces.Repositories.Production;
 using Microsoft.EntityFrameworkCore;
+using System.Net;
 
 namespace CoffeeShop.Infrastructure.Persistence.Repositories.Production
 {
@@ -54,7 +55,8 @@ namespace CoffeeShop.Infrastructure.Persistence.Repositories.Production
                     IsDeleted = r.IsDeleted
                 })
                 .ToListAsync(cancellationToken);
-            return Result<List<RecipeDTO>>.SuccessResponse(recipes, "Recipes retrieved successfully.");
+            return Result<List<RecipeDTO>>
+                .SuccessResponse(recipes, "Recipes retrieved successfully.", HttpStatusCode.OK);
         }
 
         public async Task<Result<RecipeDTO>> GetRecipeByPublicIdAsync(Guid id, CancellationToken cancellationToken = default)
@@ -100,9 +102,11 @@ namespace CoffeeShop.Infrastructure.Persistence.Repositories.Production
                 .FirstOrDefaultAsync(cancellationToken);
             if (recipe == null)
             {
-                return Result<RecipeDTO>.ErrorResponse("Recipe not found.");
+                return Result<RecipeDTO>
+                    .ErrorResponse("Recipe not found.", HttpStatusCode.NotFound);
             }
-            return Result<RecipeDTO>.SuccessResponse(recipe, "Recipe retrieved successfully.");
+            return Result<RecipeDTO>
+                .SuccessResponse(recipe, "Recipe retrieved successfully.", HttpStatusCode.OK);
         }
     }
 }

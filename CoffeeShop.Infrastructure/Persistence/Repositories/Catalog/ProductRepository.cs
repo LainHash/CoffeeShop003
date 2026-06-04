@@ -7,6 +7,7 @@ using CoffeeShop.Domain.Entities.Catalog;
 using CoffeeShop.Domain.Entities.Inventory;
 using CoffeeShop.Domain.Entities.Misc;
 using Microsoft.EntityFrameworkCore;
+using System.Net;
 
 namespace CoffeeShop.Infrastructure.Persistence.Repositories.Catalog
 {
@@ -60,7 +61,8 @@ namespace CoffeeShop.Infrastructure.Persistence.Repositories.Catalog
                     IsDeleted = p.Product.IsDeleted
                 })
                 .ToListAsync(cancellationToken);
-            return Result<List<ProductDTO>>.SuccessResponse(products, "Products retrieved successfully.");
+            return Result<List<ProductDTO>>
+                    .SuccessResponse(products, "Products retrieved successfully.", HttpStatusCode.OK);
         }
 
         public async Task<Result<ProductDTO>> GetProductByPublicIdAsync(Guid id,
@@ -108,9 +110,11 @@ namespace CoffeeShop.Infrastructure.Persistence.Repositories.Catalog
                 .FirstOrDefaultAsync(cancellationToken);
             if (product == null)
             {
-                return Result<ProductDTO>.ErrorResponse("Product not found.");
+                return Result<ProductDTO>
+                        .ErrorResponse("Product not found.", HttpStatusCode.NotFound);
             }
-            return Result<ProductDTO>.SuccessResponse(product, "Product retrieved successfully.");
+            return Result<ProductDTO>
+                    .SuccessResponse(product, "Product retrieved successfully.", HttpStatusCode.OK);
 
         }
 
@@ -120,7 +124,7 @@ namespace CoffeeShop.Infrastructure.Persistence.Repositories.Catalog
             using var transacton = await _context.Database.BeginTransactionAsync(cancellationToken);
             try
             {
-                var product = new Product
+                var product = new Product()
                 {
                     ProductName = createProductDTO.ProductName,
                     Description = createProductDTO.Description ?? string.Empty,
@@ -131,7 +135,7 @@ namespace CoffeeShop.Infrastructure.Persistence.Repositories.Catalog
                 _context.Products.Add(product);
                 await _context.SaveChangesAsync(cancellationToken);
 
-                var productSku = new ProductSku
+                var productSku = new ProductSku()
                 {
                     ProductId = product.ProductId,
                     UnitPrice = createProductDTO.UnitPrice,
@@ -153,7 +157,7 @@ namespace CoffeeShop.Infrastructure.Persistence.Repositories.Catalog
                 await _context.SaveChangesAsync(cancellationToken);
 
                 await transacton.CommitAsync(cancellationToken);
-                var productDTO = new ProductDTO
+                var productDTO = new ProductDTO()
                 {
                     PublicId = product.PublicId,
                     ProductName = product.ProductName,
@@ -174,14 +178,15 @@ namespace CoffeeShop.Infrastructure.Persistence.Repositories.Catalog
                     UpdatedAt = product.UpdatedAt,
                     IsDeleted = product.IsDeleted
                 };
-                return Result<ProductDTO>.SuccessResponse(productDTO, "Product created successfully.");
+                return Result<ProductDTO>
+                    .SuccessResponse(productDTO, "Product created successfully.", HttpStatusCode.Created);
             }
             catch (Exception ex)
             {
                 await transacton.RollbackAsync(cancellationToken);
-                return Result<ProductDTO>.ErrorResponse($"An error occurred while creating the product: {ex.Message}");
+                return Result<ProductDTO>
+                    .ErrorResponse($"An error occurred while creating the product: {ex.Message}", HttpStatusCode.InternalServerError);
             }
-            throw new NotImplementedException();
         }
 
         public async Task<Result<ProductDTO>> UpdateProductAsync(Guid id, UpdateProductDTO updateProductDTO,
@@ -204,7 +209,8 @@ namespace CoffeeShop.Infrastructure.Persistence.Repositories.Catalog
             var product = await query.FirstOrDefaultAsync(cancellationToken);
             if (product == null)
             {
-                return Result<ProductDTO>.ErrorResponse("Product not found.");
+                return Result<ProductDTO>
+                        .ErrorResponse("Product not found.", HttpStatusCode.NotFound);
             }
 
             product.Product.ProductName = updateProductDTO.ProductName;
@@ -245,21 +251,24 @@ namespace CoffeeShop.Infrastructure.Persistence.Repositories.Catalog
                 IsDeleted = product.Product.IsDeleted
             };
             await _context.SaveChangesAsync(cancellationToken);
-            return Result<ProductDTO>.SuccessResponse(dto, "Product updated successfully.");
+            return Result<ProductDTO>
+                    .SuccessResponse(dto, "Product updated successfully.", HttpStatusCode.OK);
         }
 
         public async Task<Result> DeleteProductAsync(Guid id,
-                                                                    CancellationToken cancellationToken = default)
+                                                    CancellationToken cancellationToken = default)
         {
             var product = await _context.Products
                 .FirstOrDefaultAsync(p => p.PublicId == id, cancellationToken);
             if (product == null)
             {
-                return Result.ErrorResponse("Product not found.");
+                return Result
+                        .ErrorResponse("Product not found.", HttpStatusCode.NotFound);
             }
             if (product.IsDeleted)
             {
-                return Result.ErrorResponse("Product is already deleted.");
+                return Result
+                        .ErrorResponse("Product is already deleted.", HttpStatusCode.Conflict);
             }
 
             product.IsDeleted = true;
@@ -267,29 +276,33 @@ namespace CoffeeShop.Infrastructure.Persistence.Repositories.Catalog
 
             await _context.SaveChangesAsync(cancellationToken);
 
-            return Result.SuccessResponse("Product deleted successfully.");
+            return Result
+                    .SuccessResponse("Product deleted successfully.", HttpStatusCode.OK);
         }
 
         public async Task<Result> RestoreProductAsync(Guid id,
-                                                                    CancellationToken cancellationToken = default)
+                                                    CancellationToken cancellationToken = default)
         {
             var product = await _context.Products
                 .FirstOrDefaultAsync(p => p.PublicId == id, cancellationToken);
 
             if (product == null)
             {
-                return Result.ErrorResponse("Product not found.");
+                return Result
+                        .ErrorResponse("Product not found.", HttpStatusCode.NotFound);
             }
             if (!product.IsDeleted)
             {
-                return Result.ErrorResponse("Product is not deleted.");
+                return Result
+                        .ErrorResponse("Product is not deleted.", HttpStatusCode.Conflict);
             }
 
             product.IsDeleted = false;
             product.UpdatedAt = DateTime.Now;
 
             await _context.SaveChangesAsync(cancellationToken);
-            return Result.SuccessResponse("Product restored successfully.");
+            return Result
+                    .SuccessResponse("Product restored successfully.", HttpStatusCode.OK);
         }
 
         private async Task<int> GetCategoryId(string name)

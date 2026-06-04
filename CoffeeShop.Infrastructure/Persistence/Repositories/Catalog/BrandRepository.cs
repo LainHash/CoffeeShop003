@@ -20,7 +20,8 @@ namespace CoffeeShop.Infrastructure.Persistence.Repositories.Catalog
                 BrandName = b.BrandName,
                 Description = b.Description
             }).ToListAsync(cancellationToken);
-            return Result<List<BrandDTO>>.SuccessResponse(brands, "Brands retrieved successfully.");
+            return Result<List<BrandDTO>>
+                .SuccessResponse(brands, "Brands retrieved successfully.");
         }
     }
 }

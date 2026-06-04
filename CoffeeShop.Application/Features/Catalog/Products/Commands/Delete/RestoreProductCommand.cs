@@ -2,7 +2,7 @@
 using CoffeeShop.Application.Features.Catalog.Products.DTOs;
 using MediatR;
 
-namespace CoffeeShop.Application.Features.Catalog.Products.Commands
+namespace CoffeeShop.Application.Features.Catalog.Products.Commands.Delete
 {
     public class RestoreProductCommand : IRequest<Result>
     {

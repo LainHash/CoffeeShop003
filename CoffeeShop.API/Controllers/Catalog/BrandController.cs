@@ -20,9 +20,9 @@ namespace CoffeeShop.API.Controllers.Catalog
             var result = await _mediator.Send(new GetBrandsQuery());
             if (!result.IsSuccess)
             {
-                return BadRequest(result.Message);
+                return StatusCode(result.StatusCode, result);
             }
-            return Ok(result);
+            return StatusCode(result.StatusCode, result);
         }
     }
 }

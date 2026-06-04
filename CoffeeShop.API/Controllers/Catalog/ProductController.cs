@@ -1,4 +1,7 @@
-﻿using CoffeeShop.Application.Features.Catalog.Products.Commands;
+﻿
+using CoffeeShop.Application.Features.Catalog.Products.Commands.Create;
+using CoffeeShop.Application.Features.Catalog.Products.Commands.Delete;
+using CoffeeShop.Application.Features.Catalog.Products.Commands.Update;
 using CoffeeShop.Application.Features.Catalog.Products.DTOs;
 using CoffeeShop.Application.Features.Catalog.Products.Queries;
 using MediatR;
@@ -20,11 +23,7 @@ namespace CoffeeShop.API.Controllers.Catalog
         public async Task<IActionResult> GetProducts()
         {
             var result = await _mediator.Send(new GetProductsQuery());
-            if (!result.IsSuccess)
-            {
-                return BadRequest(result.Message);
-            }
-            return Ok(result);
+            return StatusCode(result.StatusCode, result);
         }
 
         [HttpGet("{id}")]
@@ -33,9 +32,9 @@ namespace CoffeeShop.API.Controllers.Catalog
             var result = await _mediator.Send(new GetProductByPublicIdQuery(id));
             if (!result.IsSuccess)
             {
-                return NotFound(result.Message);
+                return StatusCode(result.StatusCode, result);
             }
-            return Ok(result);
+            return StatusCode(result.StatusCode, result);
         }
 
         [HttpPost]
@@ -44,9 +43,9 @@ namespace CoffeeShop.API.Controllers.Catalog
             var result = await _mediator.Send(new CreateProductCommand(createProductDTO));
             if (!result.IsSuccess)
             {
-                return BadRequest(result.Message);
+                return StatusCode(result.StatusCode, result);
             }
-            return Ok(result);
+            return StatusCode(result.StatusCode, result);
         }
 
         [HttpPost("{id}")]
@@ -55,9 +54,9 @@ namespace CoffeeShop.API.Controllers.Catalog
             var result = await _mediator.Send(new UpdateProductCommand(id, updateProductDTO));
             if (!result.IsSuccess)
             {
-                return BadRequest(result.Message);
+                return StatusCode(result.StatusCode, result);
             }
-            return Ok(result);
+            return StatusCode(result.StatusCode, result);
         }
 
         [HttpDelete("{id}")]
@@ -66,9 +65,9 @@ namespace CoffeeShop.API.Controllers.Catalog
             var result = await _mediator.Send(new DeleteProductCommand(id));
             if (!result.IsSuccess)
             {
-                return BadRequest(result.Message);
+                return StatusCode(result.StatusCode, result);
             }
-            return Ok(result);
+            return StatusCode(result.StatusCode, result);
         }
 
         [HttpPatch("{id}/restore")]
@@ -77,9 +76,9 @@ namespace CoffeeShop.API.Controllers.Catalog
             var result = await _mediator.Send(new RestoreProductCommand(id));
             if (!result.IsSuccess)
             {
-                return BadRequest(result.Message);
+                return StatusCode(result.StatusCode, result);
             }
-            return Ok(result);
+            return StatusCode(result.StatusCode, result);
         }
     }
 }

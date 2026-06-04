@@ -2,7 +2,7 @@
 using CoffeeShop.Application.Features.Catalog.Products.DTOs;
 using MediatR;
 
-namespace CoffeeShop.Application.Features.Catalog.Products.Commands
+namespace CoffeeShop.Application.Features.Catalog.Products.Commands.Update
 {
     public class UpdateProductCommand : IRequest<Result<ProductDTO>>
     {

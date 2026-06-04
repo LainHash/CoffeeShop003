@@ -23,7 +23,8 @@ namespace CoffeeShop.Infrastructure.Persistence.Repositories.Misc
                     CreatedAt = i.CreatedAt
                 })
                 .ToListAsync();
-            return Result<List<ImageDTO>>.SuccessResponse(images);
+            return Result<List<ImageDTO>>
+                .SuccessResponse(images);
         }
     }
 }

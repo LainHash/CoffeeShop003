@@ -17,11 +17,7 @@ namespace CoffeeShop.API.Controllers.Misc
         public async Task<IActionResult> GetImages()
         {
             var result = await _mediator.Send(new Application.Features.Misc.Images.Queries.GetImagesQuery());
-            if (!result.IsSuccess)
-            {
-                return BadRequest(result);
-            }
-            return Ok(result);
+            return StatusCode(result.StatusCode, result);
         }
     }
 }

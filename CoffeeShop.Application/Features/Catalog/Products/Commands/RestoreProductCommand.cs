@@ -4,7 +4,7 @@ using MediatR;
 
 namespace CoffeeShop.Application.Features.Catalog.Products.Commands
 {
-    public class RestoreProductCommand : IRequest<Result<ProductDTO>>
+    public class RestoreProductCommand : IRequest<Result>
     {
         public Guid Id { get; set; }
         public RestoreProductCommand(Guid id)

@@ -20,6 +20,7 @@
     <Folder Include="Behaviors\" />
     <Folder Include="Features\Catalog\Brands\Commands\" />
     <Folder Include="Features\Catalog\Categories\Commands\" />
+    <Folder Include="Features\Catalog\TableEntities\Commands\" />
     <Folder Include="Features\Inventory\" />
     <Folder Include="Features\Inventory\StockTransactions\" />
     <Folder Include="Features\Misc\Images\Commands\" />

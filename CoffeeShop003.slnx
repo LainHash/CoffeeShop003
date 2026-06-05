@@ -1,5 +1,6 @@
 <Solution>
   <Folder Name="/Solution Items/">
+    <File Path=".editorconfig" />
     <File Path="MyScript.txt" />
   </Folder>
   <Project Path="CoffeeShop.API/CoffeeShop.API.csproj" />

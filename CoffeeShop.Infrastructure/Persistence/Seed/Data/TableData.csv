@@ -1,0 +1,15 @@
+﻿TableId,Shape,TableNumber,FloorNumber,Capacity,Status
+1,Circle,1,1,6,Available
+2,Square,2,1,5,Available
+3,Circle,3,1,7,Available
+4,Rectangle,4,1,6,Available
+5,Rectangle,5,1,6,Available
+6,Square,6,1,5,Available
+7,Circle,7,1,7,Available
+8,Square,8,1,5,Available
+9,Circle,1,2,8,Available
+10,Square,2,2,8,Available
+11,Circle,3,2,8,Available
+12,Square,4,2,8,Available
+13,Rectangle,1,3,12,Available
+14,Rectangle,2,3,12,Available

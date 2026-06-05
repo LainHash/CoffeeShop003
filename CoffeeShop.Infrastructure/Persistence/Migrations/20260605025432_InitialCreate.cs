@@ -80,6 +80,27 @@ namespace CoffeeShop.Infrastructure.Persistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "TableEntities",
+                columns: table => new
+                {
+                    TableId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    PublicId = table.Column<Guid>(type: "uniqueidentifier", nullable: false, defaultValueSql: "newid()"),
+                    Shape = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    TableNumber = table.Column<int>(type: "int", nullable: false),
+                    FloorNumber = table.Column<int>(type: "int", nullable: false),
+                    Capacity = table.Column<int>(type: "int", nullable: false),
+                    Status = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false, defaultValue: "Available"),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "sysdatetime()"),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "sysdatetime()"),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false, defaultValue: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TableEntities", x => x.TableId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Ingredients",
                 columns: table => new
                 {
@@ -268,6 +289,13 @@ namespace CoffeeShop.Infrastructure.Persistence.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_Images_ReferenceId_Type",
+                table: "Images",
+                columns: new[] { "ReferenceId", "Type" },
+                unique: true,
+                filter: "[IsPrimary] = 1");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Ingredients_BrandId",
                 table: "Ingredients",
                 column: "BrandId");
@@ -336,6 +364,18 @@ namespace CoffeeShop.Infrastructure.Persistence.Migrations
                 name: "IX_RecipeSteps_RecipeId",
                 table: "RecipeSteps",
                 column: "RecipeId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TableEntities_PublicId",
+                table: "TableEntities",
+                column: "PublicId",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TableEntities_TableNumber_FloorNumber",
+                table: "TableEntities",
+                columns: new[] { "TableNumber", "FloorNumber" },
+                unique: true);
         }
 
         /// <inheritdoc />
@@ -358,6 +398,9 @@ namespace CoffeeShop.Infrastructure.Persistence.Migrations
 
             migrationBuilder.DropTable(
                 name: "StockTransactions");
+
+            migrationBuilder.DropTable(
+                name: "TableEntities");
 
             migrationBuilder.DropTable(
                 name: "Ingredients");

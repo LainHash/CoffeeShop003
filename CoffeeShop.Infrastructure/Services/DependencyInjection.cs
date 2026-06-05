@@ -27,6 +27,7 @@ namespace CoffeeShop.Infrastructure.Services
             // Seeders
             services.AddScoped<DatabaseSeeder>();
             services.AddScoped<BrandSeeder>();
+            services.AddScoped<TableSeeder>();
             services.AddScoped<CategorySeeder>();
             services.AddScoped<ProductSeeder>();
             services.AddScoped<IngredientSeeder>();

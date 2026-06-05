@@ -18,6 +18,7 @@ namespace CoffeeShop.Infrastructure.Persistence
         public DbSet<Brand> Brands => Set<Brand>();
         public DbSet<Image> Images => Set<Image>();
         public DbSet<Ingredient> Ingredients => Set<Ingredient>();
+        public DbSet<TableEntity> TableEntities => Set<TableEntity>();
 
         // Inventory
         public DbSet<ProductSku> ProductSkus => Set<ProductSku>();

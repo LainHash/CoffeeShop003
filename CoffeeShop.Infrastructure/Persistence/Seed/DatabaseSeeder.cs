@@ -34,7 +34,8 @@ public class DatabaseSeeder
             // Seed in order to respect foreign key constraints
             await SeedAsync<BrandSeeder>(context);
             await SeedAsync<CategorySeeder>(context);
-            
+            await SeedAsync<TableSeeder>(context);
+
             await SeedAsync<ProductSeeder>(context);
             await SeedAsync<IngredientSeeder>(context);
             

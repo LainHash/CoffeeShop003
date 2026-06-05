@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CoffeeShop.Infrastructure.Persistence.Migrations
 {
     [DbContext(typeof(CoffeeShopDbContext))]
-    [Migration("20260604041943_ThemUniqueChoAnhPrimary")]
-    partial class ThemUniqueChoAnhPrimary
+    [Migration("20260605025432_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -212,6 +212,66 @@ namespace CoffeeShop.Infrastructure.Persistence.Migrations
                     b.ToTable("Products", (string)null);
                 });
 
+            modelBuilder.Entity("CoffeeShop.Domain.Entities.Catalog.TableEntity", b =>
+                {
+                    b.Property<int>("TableId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TableId"));
+
+                    b.Property<int>("Capacity")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("sysdatetime()");
+
+                    b.Property<int>("FloorNumber")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
+                    b.Property<Guid>("PublicId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier")
+                        .HasDefaultValueSql("newid()");
+
+                    b.Property<string>("Shape")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .ValueGeneratedOnAdd()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)")
+                        .HasDefaultValue("Available");
+
+                    b.Property<int>("TableNumber")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("sysdatetime()");
+
+                    b.HasKey("TableId");
+
+                    b.HasIndex("PublicId")
+                        .IsUnique();
+
+                    b.HasIndex("TableNumber", "FloorNumber")
+                        .IsUnique();
+
+                    b.ToTable("TableEntities", (string)null);
+                });
+
             modelBuilder.Entity("CoffeeShop.Domain.Entities.Inventory.IngredientSku", b =>
                 {
                     b.Property<int>("IngredientSkuId")
@@ -352,7 +412,9 @@ namespace CoffeeShop.Infrastructure.Persistence.Migrations
 
                     b.HasKey("ImageId");
 
-                    b.HasIndex("ReferenceId", "Type", "IsPrimary");
+                    b.HasIndex("ReferenceId", "Type")
+                        .IsUnique()
+                        .HasFilter("[IsPrimary] = 1");
 
                     b.ToTable("Images", (string)null);
                 });

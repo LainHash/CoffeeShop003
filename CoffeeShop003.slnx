@@ -1,10 +1,10 @@
 <Solution>
   <Folder Name="/Solution Items/">
-    <File Path=".editorconfig" />
     <File Path="MyScript.txt" />
   </Folder>
   <Project Path="CoffeeShop.API/CoffeeShop.API.csproj" />
   <Project Path="CoffeeShop.Application/CoffeeShop.Application.csproj" />
+  <Project Path="CoffeeShop.BlazorApp/CoffeeShop.BlazorApp.csproj" Id="519e8329-2fd3-46dc-8492-747dd4a77ea7" />
   <Project Path="CoffeeShop.Domain/CoffeeShop.Domain.csproj" />
   <Project Path="CoffeeShop.Infrastructure/CoffeeShop.Infrastructure.csproj" />
 </Solution>

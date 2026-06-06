@@ -1,4 +1,16 @@
-﻿<!-- Navbar Start -->
+﻿@using CoffeeShop.Application.Common.Models
+
+@{
+    var home = new RouteModel("Home");
+    var about = new RouteModel("About");
+    var service = new RouteModel("Service");
+    var testimonial = new RouteModel("Testimonial");
+    var menu = new RouteModel("Menu");
+    var contact = new RouteModel("Contact");
+    var reservation = new RouteModel("Reservation");
+}
+
+<!-- Navbar Start -->
 <div class="container-fluid p-0 nav-bar" style="position: sticky; top: 0; z-index: 1040; background: #33211D;">
     <nav class="navbar navbar-expand-lg bg-none navbar-dark py-3">
         @* <AuthorizeView Roles="Manager, Employee">
@@ -16,13 +28,32 @@
         </button>
         <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
             <div class="navbar-nav ml-auto p-4">
-                <a class="nav-item nav-link" href="/">Trang Chủ</a>
-                <a class="nav-item nav-link" href="/Home/About">Về Chúng Tôi</a>
-                <a class="nav-item nav-link" href="/Home/Service">Dịch Vụ</a>
-                <a class="nav-item nav-link" href="/Menu">Thực Đơn</a>
-                <a class="nav-item nav-link" href="/Home/Testimonial">Phản Hồi</a>
-                <a href="/Home/Contact" class="nav-item nav-link">Liên Hệ</a>
-                <a href="/Reservation" class="nav-item nav-link">Đặt bàn</a>
+                <a class="nav-item nav-link"
+                   href="@home.Endpoint">
+                    @home.ViName
+                </a>
+                <a class="nav-item nav-link"
+                   href="@about.Endpoint">
+                    @about.ViName
+                </a>
+                <a class="nav-item nav-link"
+                   href="@service.Endpoint">
+                    @service.ViName
+                </a>
+                <a class="nav-item nav-link"
+                   href="@menu.Endpoint">
+                    @menu.ViName
+                </a>
+                <a class="nav-item nav-link"
+                   href="@testimonial.Endpoint">
+                    @testimonial.ViName
+                </a>
+                <a href="@contact.Endpoint"
+                   class="nav-item nav-link">@contact.ViName</a>
+                <a href="@reservation.Endpoint"
+                   class="nav-item nav-link">
+                    @reservation.ViName
+                </a>
 
                 @* <AuthorizeView>
                     <Authorized>
@@ -49,5 +80,4 @@
     </nav>
 </div>
 <!-- Navbar End -->
-
 @* <Sidebar /> *@

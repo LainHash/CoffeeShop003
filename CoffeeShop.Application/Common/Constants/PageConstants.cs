@@ -1,4 +1,6 @@
-﻿namespace CoffeeShop.Application.Common.Constants
+﻿using CoffeeShop.Application.Common.Models;
+
+namespace CoffeeShop.Application.Common.Constants
 {
     public static class PageConstants
     {
@@ -26,7 +28,7 @@
             return routeDict[route.ToLower()];
         }
 
-        public static string ViName(this string name) 
+        public static string ViName(this string name)
         {
             var viDict = new Dictionary<string, string>()
             {
@@ -39,7 +41,8 @@
                 { Reservation.ToLower(), "Đặt Bàn" }
             };
 
-            return viDict[name];
+            return viDict[name.ToLower()];
         }
+
     }
 }

@@ -4,7 +4,7 @@ namespace CoffeeShop.Application.Features.Catalog.Products.DTOs
 {
     public class CreateProductDTO
     {
-        public string ProductName { get; set; } = null!;
+        public string Name { get; set; } = null!;
         public string? Description { get; set; }
         public bool IsMadeToOrder { get; set; }
 

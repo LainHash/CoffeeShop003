@@ -26,7 +26,7 @@ namespace CoffeeShop.Infrastructure.Persistence.Repositories.Catalog
                 .Include(i => i.Category)
                 .Include(i => i.IngredientSku)
                 .Join(_context.Images,
-                    ir => ir.IngredientId,
+                    ir => ir.Id,
                     im => im.ReferenceId,
                     (ir, im) => new
                     {
@@ -38,10 +38,10 @@ namespace CoffeeShop.Infrastructure.Persistence.Repositories.Catalog
                 .Select(i => new IngredientDTO
                 {
                     PublicId = i.Ingredient.PublicId,
-                    IngredientName = i.Ingredient.IngredientName,
+                    Name = i.Ingredient.Name,
                     Description = i.Ingredient.Description,
-                    BrandName = i.Ingredient.Brand.BrandName,
-                    CategoryName = i.Ingredient.Category.CategoryName,
+                    BrandName = i.Ingredient.Brand.Name,
+                    CategoryName = i.Ingredient.Category.Name,
                     Images = new List<ImageDTO>
                     {
                         new ImageDTO
@@ -72,7 +72,7 @@ namespace CoffeeShop.Infrastructure.Persistence.Repositories.Catalog
                 .Include(i => i.Category)
                 .Include(i => i.IngredientSku)
                 .Join(_context.Images,
-                    ir => ir.IngredientId,
+                    ir => ir.Id,
                     im => im.ReferenceId,
                     (ir, im) => new
                     {
@@ -84,10 +84,10 @@ namespace CoffeeShop.Infrastructure.Persistence.Repositories.Catalog
                 .Select(i => new IngredientDTO
                 {
                     PublicId = i.Ingredient.PublicId,
-                    IngredientName = i.Ingredient.IngredientName,
+                    Name = i.Ingredient.Name,
                     Description = i.Ingredient.Description,
-                    BrandName = i.Ingredient.Brand.BrandName,
-                    CategoryName = i.Ingredient.Category.CategoryName,
+                    BrandName = i.Ingredient.Brand.Name,
+                    CategoryName = i.Ingredient.Category.Name,
                     Images = new List<ImageDTO>
                     {
                         new ImageDTO
@@ -124,7 +124,7 @@ namespace CoffeeShop.Infrastructure.Persistence.Repositories.Catalog
                 var ingredient = new Ingredient
                 {
                     PublicId = Guid.NewGuid(),
-                    IngredientName = createIngredientDTO.IngredientName,
+                    Name = createIngredientDTO.Name,
                     Description = createIngredientDTO.Description,
                     BrandId = await GetBrandId(createIngredientDTO.BrandName),
                     CategoryId = await GetCategoryId(createIngredientDTO.CategoryName)
@@ -134,7 +134,7 @@ namespace CoffeeShop.Infrastructure.Persistence.Repositories.Catalog
 
                 var ingredientSku = new IngredientSku
                 {
-                    IngredientId = ingredient.IngredientId,
+                    IngredientId = ingredient.Id,
                     UnitPrice = createIngredientDTO.UnitPrice,
                     Unit = createIngredientDTO.Unit,
                     Stock = createIngredientDTO.Stock,
@@ -145,7 +145,7 @@ namespace CoffeeShop.Infrastructure.Persistence.Repositories.Catalog
 
                 var images = createIngredientDTO.Images.Select(img => new Image
                 {
-                    ReferenceId = ingredient.IngredientId,
+                    ReferenceId = ingredient.Id,
                     Type = ReferenceType.Ingredient,
                     ImageUrl = img.ImageUrl,
                     IsPrimary = img.IsPrimary
@@ -158,7 +158,7 @@ namespace CoffeeShop.Infrastructure.Persistence.Repositories.Catalog
                 var ingredientDTO = new IngredientDTO
                 {
                     PublicId = ingredient.PublicId,
-                    IngredientName = ingredient.IngredientName,
+                    Name = ingredient.Name,
                     Description = ingredient.Description,
                     BrandName = createIngredientDTO.BrandName,
                     CategoryName = createIngredientDTO.CategoryName,
@@ -190,7 +190,7 @@ namespace CoffeeShop.Infrastructure.Persistence.Repositories.Catalog
                 .Include(i => i.Category)
                 .Include(i => i.IngredientSku)
                 .Join(_context.Images,
-                    ir => ir.IngredientId,
+                    ir => ir.Id,
                     im => im.ReferenceId,
                     (ir, im) => new
                     {
@@ -206,7 +206,7 @@ namespace CoffeeShop.Infrastructure.Persistence.Repositories.Catalog
                     .ErrorResponse("Ingredient not found.", HttpStatusCode.NotFound);
             }
 
-            ingredient.Ingredient.IngredientName = updateIngredientDTO.IngredientName;
+            ingredient.Ingredient.Name = updateIngredientDTO.Name;
             ingredient.Ingredient.Description = updateIngredientDTO.Description;
 
             ingredient.Ingredient.BrandId = await GetBrandId(updateIngredientDTO.BrandName);
@@ -221,7 +221,7 @@ namespace CoffeeShop.Infrastructure.Persistence.Repositories.Catalog
             var ingredientDTO = new IngredientDTO
             {
                 PublicId = ingredient.Ingredient.PublicId,
-                IngredientName = ingredient.Ingredient.IngredientName,
+                Name = ingredient.Ingredient.Name,
                 Description = ingredient.Ingredient.Description,
                 BrandName = updateIngredientDTO.BrandName,
                 CategoryName = updateIngredientDTO.CategoryName,
@@ -298,15 +298,15 @@ namespace CoffeeShop.Infrastructure.Persistence.Repositories.Catalog
                 throw new ArgumentException("Category name cannot be null or empty.");
             }
             var category = await _context.Categories
-                .FirstOrDefaultAsync(c => c.CategoryName == name);
+                .FirstOrDefaultAsync(c => c.Name == name);
             if (category == null)
             {
-                var newCategory = new Category { CategoryName = name };
+                var newCategory = new Category { Name = name };
                 _context.Categories.Add(newCategory);
                 await _context.SaveChangesAsync();
-                return newCategory.CategoryId;
+                return newCategory.Id;
             }
-            return category.CategoryId;
+            return category.Id;
         }
 
         private async Task<int> GetBrandId(string name)
@@ -316,15 +316,15 @@ namespace CoffeeShop.Infrastructure.Persistence.Repositories.Catalog
                 throw new ArgumentException("Brand name cannot be null or empty.");
             }
             var brand = await _context.Brands
-                .FirstOrDefaultAsync(b => b.BrandName == name);
+                .FirstOrDefaultAsync(b => b.Name == name);
             if (brand == null)
             {
-                var newBrand = new Brand { BrandName = name };
+                var newBrand = new Brand { Name = name };
                 _context.Brands.Add(newBrand);
                 await _context.SaveChangesAsync();
-                return newBrand.BrandId;
+                return newBrand.Id;
             }
-            return brand.BrandId;
+            return brand.Id;
         }
     }
 }

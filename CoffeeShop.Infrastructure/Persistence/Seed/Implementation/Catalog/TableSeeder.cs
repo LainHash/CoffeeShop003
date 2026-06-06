@@ -29,7 +29,7 @@ namespace CoffeeShop.Infrastructure.Persistence.Seed.Implementation.Catalog
                 {
                     var tableEntity = new TableEntity
                     {
-                        TableId = record.TableId,
+                        Id = record.Id,
                         Shape = record.Shape,
                         TableNumber = record.TableNumber,
                         FloorNumber = record.FloorNumber,
@@ -48,7 +48,7 @@ namespace CoffeeShop.Infrastructure.Persistence.Seed.Implementation.Catalog
 
     public class TableRecord
     {
-        public int TableId { get; set; }
+        public int Id { get; set; }
         public string Shape { get; set; } = null!;
         public int TableNumber { get; set; }
         public int FloorNumber { get; set; }

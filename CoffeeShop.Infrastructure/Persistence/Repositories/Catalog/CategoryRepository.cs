@@ -18,7 +18,7 @@ namespace CoffeeShop.Infrastructure.Persistence.Repositories.Catalog
             var categories = await _context.Categories
                 .Select(c => new CategoryDTO
                 {
-                    CategoryName = c.CategoryName,
+                    Name = c.Name,
                     Description = c.Description
                 })
                 .ToListAsync(cancellationToken);

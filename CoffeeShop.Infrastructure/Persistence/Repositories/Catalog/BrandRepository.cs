@@ -17,7 +17,7 @@ namespace CoffeeShop.Infrastructure.Persistence.Repositories.Catalog
         {
             var brands = await _context.Brands.Select(b => new BrandDTO
             {
-                BrandName = b.BrandName,
+                Name = b.Name,
                 Description = b.Description
             }).ToListAsync(cancellationToken);
             return Result<List<BrandDTO>>

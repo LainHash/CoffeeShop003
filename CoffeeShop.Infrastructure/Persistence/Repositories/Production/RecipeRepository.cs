@@ -35,14 +35,14 @@ namespace CoffeeShop.Infrastructure.Persistence.Repositories.Production
                     PublicId = r.PublicId,
                     Inspiration = r.Inspiration,
                     Description = r.Description,
-                    ProductName = r.Product.ProductName,
+                    ProductName = r.Product.Name,
                     Ingredients = r.RecipeIngredients.Select(ri => new RecipeIngredient
                     {
-                        IngredientName = ri.Ingredient.IngredientName,
+                        IngredientName = ri.Ingredient.Name,
                         Quantity = ri.Quantity,
                         Unit = ri.Ingredient.IngredientSku.Unit,
-                        BrandName = ri.Ingredient.Brand.BrandName,
-                        CategoryName = ri.Ingredient.Category.CategoryName
+                        BrandName = ri.Ingredient.Brand.Name,
+                        CategoryName = ri.Ingredient.Category.Name
                     }).ToList(),
                     Steps = r.RecipeSteps.Select(rs => new RecipeStep
                     {
@@ -80,14 +80,14 @@ namespace CoffeeShop.Infrastructure.Persistence.Repositories.Production
                     PublicId = r.PublicId,
                     Inspiration = r.Inspiration,
                     Description = r.Description,
-                    ProductName = r.Product.ProductName,
+                    ProductName = r.Product.Name,
                     Ingredients = r.RecipeIngredients.Select(ri => new RecipeIngredient
                     {
-                        IngredientName = ri.Ingredient.IngredientName,
+                        IngredientName = ri.Ingredient.Name,
                         Quantity = ri.Quantity,
                         Unit = ri.Ingredient.IngredientSku.Unit,
-                        BrandName = ri.Ingredient.Brand.BrandName,
-                        CategoryName = ri.Ingredient.Category.CategoryName
+                        BrandName = ri.Ingredient.Brand.Name,
+                        CategoryName = ri.Ingredient.Category.Name
                     }).ToList(),
                     Steps = r.RecipeSteps.Select(rs => new RecipeStep
                     {

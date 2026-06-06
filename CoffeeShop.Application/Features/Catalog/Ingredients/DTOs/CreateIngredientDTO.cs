@@ -4,7 +4,7 @@ namespace CoffeeShop.Application.Features.Catalog.Ingredients.DTOs
 {
     public class CreateIngredientDTO
     {
-        public string IngredientName { get; set; } = null!;
+        public string Name { get; set; } = null!;
         public string? Description { get; set; }
 
         public string BrandName { get; set; } = null!;

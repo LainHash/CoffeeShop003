@@ -26,7 +26,7 @@ namespace CoffeeShop.Infrastructure.Persistence.Repositories.Catalog
                 .Include(p => p.Brand)
                 .Include(p => p.ProductSku)
                 .Join(_context.Images,
-                p => p.ProductId,
+                p => p.Id,
                 i => i.ReferenceId,
                 (p, i) => new
                 {
@@ -39,11 +39,11 @@ namespace CoffeeShop.Infrastructure.Persistence.Repositories.Catalog
                 .Select(p => new ProductDTO
                 {
                     PublicId = p.Product.PublicId,
-                    ProductName = p.Product.ProductName,
+                    Name = p.Product.Name,
                     Description = p.Product.Description,
                     IsMadeToOrder = p.Product.IsMadeToOrder,
-                    BrandName = p.Product.Brand != null ? p.Product.Brand.BrandName : "",
-                    CategoryName = p.Product.Category.CategoryName,
+                    BrandName = p.Product.Brand != null ? p.Product.Brand.Name : "",
+                    CategoryName = p.Product.Category.Name,
                     Images = new List<ImageDTO>
                     {
                         new ImageDTO
@@ -74,7 +74,7 @@ namespace CoffeeShop.Infrastructure.Persistence.Repositories.Catalog
                 .Include(p => p.Brand)
                 .Include(p => p.ProductSku)
                 .Join(_context.Images,
-                p => p.ProductId,
+                p => p.Id,
                 i => i.ReferenceId,
                 (p, i) => new
                 {
@@ -87,11 +87,11 @@ namespace CoffeeShop.Infrastructure.Persistence.Repositories.Catalog
                 .Select(p => new ProductDTO
                 {
                     PublicId = p.Product.PublicId,
-                    ProductName = p.Product.ProductName,
+                    Name = p.Product.Name,
                     Description = p.Product.Description,
                     IsMadeToOrder = p.Product.IsMadeToOrder,
-                    BrandName = p.Product.Brand != null ? p.Product.Brand.BrandName : string.Empty,
-                    CategoryName = p.Product.Category.CategoryName,
+                    BrandName = p.Product.Brand != null ? p.Product.Brand.Name : string.Empty,
+                    CategoryName = p.Product.Category.Name,
                     Images = new List<ImageDTO>
                     {
                         new ImageDTO
@@ -128,7 +128,7 @@ namespace CoffeeShop.Infrastructure.Persistence.Repositories.Catalog
             {
                 var product = new Product()
                 {
-                    ProductName = createProductDTO.ProductName,
+                    Name = createProductDTO.Name,
                     Description = createProductDTO.Description ?? string.Empty,
                     IsMadeToOrder = createProductDTO.IsMadeToOrder,
                     CategoryId = await GetCategoryId(createProductDTO.CategoryName),
@@ -139,7 +139,7 @@ namespace CoffeeShop.Infrastructure.Persistence.Repositories.Catalog
 
                 var productSku = new ProductSku()
                 {
-                    ProductId = product.ProductId,
+                    ProductId = product.Id,
                     UnitPrice = createProductDTO.UnitPrice,
                     Unit = createProductDTO.Unit,
                     Stock = createProductDTO.Stock,
@@ -150,7 +150,7 @@ namespace CoffeeShop.Infrastructure.Persistence.Repositories.Catalog
 
                 var images = createProductDTO.Images.Select(i => new Image
                 {
-                    ReferenceId = product.ProductId,
+                    ReferenceId = product.Id,
                     Type = ReferenceType.Product,
                     ImageUrl = i.ImageUrl,
                     IsPrimary = i.IsPrimary
@@ -162,7 +162,7 @@ namespace CoffeeShop.Infrastructure.Persistence.Repositories.Catalog
                 var productDTO = new ProductDTO()
                 {
                     PublicId = product.PublicId,
-                    ProductName = product.ProductName,
+                    Name = product.Name,
                     Description = product.Description,
                     IsMadeToOrder = product.IsMadeToOrder,
                     BrandName = createProductDTO.BrandName ?? string.Empty,
@@ -199,7 +199,7 @@ namespace CoffeeShop.Infrastructure.Persistence.Repositories.Catalog
                 .Include(p => p.Brand)
                 .Include(p => p.ProductSku)
                 .Join(_context.Images,
-                p => p.ProductId,
+                p => p.Id,
                 i => i.ReferenceId,
                 (p, i) => new
                 {
@@ -215,7 +215,7 @@ namespace CoffeeShop.Infrastructure.Persistence.Repositories.Catalog
                         .ErrorResponse("Product not found.", HttpStatusCode.NotFound);
             }
 
-            product.Product.ProductName = updateProductDTO.ProductName;
+            product.Product.Name = updateProductDTO.Name;
             product.Product.Description = updateProductDTO.Description ?? string.Empty;
             product.Product.IsMadeToOrder = updateProductDTO.IsMadeToOrder;
 
@@ -231,11 +231,11 @@ namespace CoffeeShop.Infrastructure.Persistence.Repositories.Catalog
             var dto = new ProductDTO
             {
                 PublicId = product.Product.PublicId,
-                ProductName = product.Product.ProductName,
+                Name = product.Product.Name,
                 Description = product.Product.Description,
                 IsMadeToOrder = product.Product.IsMadeToOrder,
-                BrandName = product.Product.Brand != null ? product.Product.Brand.BrandName : string.Empty,
-                CategoryName = product.Product.Category.CategoryName,
+                BrandName = product.Product.Brand != null ? product.Product.Brand.Name : string.Empty,
+                CategoryName = product.Product.Category.Name,
                 Images = new List<ImageDTO>
                 {
                     new ImageDTO
@@ -315,15 +315,15 @@ namespace CoffeeShop.Infrastructure.Persistence.Repositories.Catalog
                 throw new ArgumentException("Category name cannot be null or empty.");
             }
             var category = await _context.Categories
-                .FirstOrDefaultAsync(c => c.CategoryName == name);
+                .FirstOrDefaultAsync(c => c.Name == name);
             if (category == null)
             {
-                var newCategory = new Category { CategoryName = name };
+                var newCategory = new Category { Name = name };
                 _context.Categories.Add(newCategory);
                 await _context.SaveChangesAsync();
-                return newCategory.CategoryId;
+                return newCategory.Id;
             }
-            return category.CategoryId;
+            return category.Id;
         }
 
         private async Task<int?> GetBrandId(string? name)
@@ -333,15 +333,15 @@ namespace CoffeeShop.Infrastructure.Persistence.Repositories.Catalog
                 return null;
             }
             var brand = await _context.Brands
-                .FirstOrDefaultAsync(b => b.BrandName == name);
+                .FirstOrDefaultAsync(b => b.Name == name);
             if (brand == null)
             {
-                var newBrand = new Brand { BrandName = name };
+                var newBrand = new Brand { Name = name };
                 _context.Brands.Add(newBrand);
                 await _context.SaveChangesAsync();
-                return newBrand.BrandId;
+                return newBrand.Id;
             }
-            return brand.BrandId;
+            return brand.Id;
         }
 
 

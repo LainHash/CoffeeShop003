@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <Folder Include="Behaviors\" />
+    <Folder Include="Common\Constants\" />
     <Folder Include="Features\Catalog\Brands\Commands\" />
     <Folder Include="Features\Catalog\Categories\Commands\" />
     <Folder Include="Features\Catalog\TableEntities\Commands\" />

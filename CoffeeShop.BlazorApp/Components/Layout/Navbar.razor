@@ -1,14 +1,6 @@
-﻿@using CoffeeShop.Application.Common.Models
-
-@{
-    var home = new RouteModel("Home");
-    var about = new RouteModel("About");
-    var service = new RouteModel("Service");
-    var testimonial = new RouteModel("Testimonial");
-    var menu = new RouteModel("Menu");
-    var contact = new RouteModel("Contact");
-    var reservation = new RouteModel("Reservation");
-}
+﻿@using CoffeeShop.BlazorApp.Shared.Navigation
+@using CoffeeShop.BlazorApp.Common.Enums
+@using CoffeeShop.BlazorApp.Common.Records
 
 <!-- Navbar Start -->
 <div class="container-fluid p-0 nav-bar" style="position: sticky; top: 0; z-index: 1040; background: #33211D;">
@@ -29,30 +21,32 @@
         <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
             <div class="navbar-nav ml-auto p-4">
                 <a class="nav-item nav-link"
-                   href="@home.Endpoint">
-                    @home.ViName
+                   href="@HomePage.Route">
+                    @HomePage.ViName
                 </a>
                 <a class="nav-item nav-link"
-                   href="@about.Endpoint">
-                    @about.ViName
+                   href="@AboutPage.Route">
+                    @AboutPage.ViName
                 </a>
                 <a class="nav-item nav-link"
-                   href="@service.Endpoint">
-                    @service.ViName
+                   href="@ServicePage.Route">
+                    @ServicePage.ViName
                 </a>
                 <a class="nav-item nav-link"
-                   href="@menu.Endpoint">
-                    @menu.ViName
+                   href="@MenuPage.Route">
+                    @MenuPage.ViName
                 </a>
                 <a class="nav-item nav-link"
-                   href="@testimonial.Endpoint">
-                    @testimonial.ViName
+                   href="@TestimonialPage.Route">
+                    @TestimonialPage.ViName
                 </a>
-                <a href="@contact.Endpoint"
-                   class="nav-item nav-link">@contact.ViName</a>
-                <a href="@reservation.Endpoint"
+                <a href="@ContactPage.Route"
                    class="nav-item nav-link">
-                    @reservation.ViName
+                    @ContactPage.ViName
+                </a>
+                <a href="@ReservationPage.Route"
+                   class="nav-item nav-link">
+                    @ReservationPage.ViName
                 </a>
 
                 @* <AuthorizeView>
@@ -81,3 +75,29 @@
 </div>
 <!-- Navbar End -->
 @* <Sidebar /> *@
+
+@code {
+    private PageInfo HomePage =>
+        NavigationPages.Data[PageType.Home];
+
+    private PageInfo AboutPage =>
+    NavigationPages.Data[PageType.About];
+
+    private PageInfo ContactPage =>
+        NavigationPages.Data[PageType.Contact];
+
+    private PageInfo ServicePage =>
+    NavigationPages.Data[PageType.Service];
+
+    private PageInfo TestimonialPage =>
+        NavigationPages.Data[PageType.Testimonial];
+
+    private PageInfo MenuPage =>
+    NavigationPages.Data[PageType.Menu];
+
+    private PageInfo ReservationPage =>
+        NavigationPages.Data[PageType.Reservation];
+
+    private PageInfo TablePage =>
+    NavigationPages.Data[PageType.Table];
+}

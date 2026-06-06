@@ -10,4 +10,8 @@
     <ProjectReference Include="..\CoffeeShop.Application\CoffeeShop.Application.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Common\Models\" />
+  </ItemGroup>
+
 </Project>

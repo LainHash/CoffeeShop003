@@ -1,4 +1,4 @@
-RecipeIngredientId,RecipeId,IngredientId,Quantity
+﻿Id,RecipeId,IngredientId,Quantity
 1,4,12,150
 2,5,12,200
 3,6,12,150

@@ -10,9 +10,9 @@ namespace CoffeeShop.Infrastructure.Persistence.Configurations.Production
         {
             builder.ToTable("Recipes");
 
-            builder.HasKey(r => r.RecipeId);
+            builder.HasKey(r => r.Id);
 
-            builder.Property(r => r.RecipeId)
+            builder.Property(r => r.Id)
                 .UseIdentityColumn();
 
             builder.Property(r => r.PublicId)
@@ -41,6 +41,10 @@ namespace CoffeeShop.Infrastructure.Persistence.Configurations.Production
                 .IsRequired()
                 .HasDefaultValue(false);
 
+            builder.Property(r => r.DeletedAt)
+                .IsRequired(false)
+                .HasDefaultValue(null);
+
             builder.Property(r => r.ProductId)
                 .IsRequired();
 
@@ -48,6 +52,7 @@ namespace CoffeeShop.Infrastructure.Persistence.Configurations.Production
             builder.HasOne(r => r.Product)
                 .WithMany(p => p.Recipes)
                 .HasForeignKey(r => r.ProductId)
+                .HasPrincipalKey(p => p.Id)
                 .OnDelete(DeleteBehavior.Restrict);
         }
     }

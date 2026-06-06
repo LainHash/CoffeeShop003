@@ -1,4 +1,4 @@
-﻿RecipeStepId,RecipeId,StepNumber,Description,DurationSeconds
+﻿Id,RecipeId,StepNumber,Description,DurationSeconds
 1,1,1,Xay 18g hạt cà phê Espresso với độ mịn cao,10
 2,1,2,Nén bột cà phê phẳng và đều bằng tamper với lực khoảng 15kg,5
 3,1,3,Chiết xuất Espresso dưới áp suất 9 bar để thu được 30ml cà phê thành phẩm,30

@@ -1,4 +1,4 @@
-﻿TableId,Shape,TableNumber,FloorNumber,Capacity,Status
+﻿Id,Shape,TableNumber,FloorNumber,Capacity,Status
 1,Circle,1,1,6,Available
 2,Square,2,1,5,Available
 3,Circle,3,1,7,Available

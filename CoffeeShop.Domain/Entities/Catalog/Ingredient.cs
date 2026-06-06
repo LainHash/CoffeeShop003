@@ -1,19 +1,12 @@
+using CoffeeShop.Domain.Common.Models;
 using CoffeeShop.Domain.Entities.Inventory;
 using CoffeeShop.Domain.Entities.Production.Recipes;
 
 namespace CoffeeShop.Domain.Entities.Catalog
 {
-    public class Ingredient
+    public class Ingredient : SoftDeleteEntity
     {
-        public int IngredientId { get; set; }
-        public Guid PublicId { get; set; } = Guid.NewGuid();
-        public string IngredientName { get; set; } = null!;
-        public string? Description { get; set; }
-
-        // Audit
-        public DateTime CreatedAt { get; set; } = DateTime.Now;
-        public DateTime UpdatedAt { get; set; } = DateTime.Now;
-        public bool IsDeleted { get; set; }
+        public string Name { get; set; } = null!;
 
         // Foreign Keys
         public int BrandId { get; set; }

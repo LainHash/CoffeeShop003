@@ -1,4 +1,4 @@
-﻿CategoryId,CategoryName,Description
+﻿Id,Name,Description
 1,Coffee,"Các loại cà phê được pha chế từ hạt cà phê chất lượng, mang hương thơm đặc trưng và hương vị đậm đà."
 2,Cake,"Bánh ngọt, bánh kem và các món tráng miệng hấp dẫn, thích hợp dùng kèm với đồ uống."
 3,Snack,"Các món ăn nhẹ tiện lợi, phù hợp để thưởng thức giữa các bữa ăn hoặc khi trò chuyện cùng bạn bè."
@@ -6,17 +6,17 @@
 5,Flavored Syrup,"Siro tạo hương vị đa dạng dùng để pha chế đồ uống, mang lại vị ngọt và mùi thơm đặc trưng."
 6,Tea,"Các loại trà chất lượng cao, phù hợp để pha trà nóng hoặc trà lạnh với hương vị tự nhiên tinh tế."
 7,Sweetened Condensed Milk,"Sữa đặc có đường dùng để pha cà phê, trà và các loại đồ uống, tạo vị ngọt béo đặc trưng."
-8,Fresh Milk,"Sữa tươi nguyên chất dùng để tạo lớp sữa nóng và bọt sữa mịn cho các loại cà phê."
+8,Fresh Milk,Sữa tươi nguyên chất dùng để tạo lớp sữa nóng và bọt sữa mịn cho các loại cà phê.
 9,Yogurt,"Sữa chua dùng để pha chế các loại đồ uống mang vị chua nhẹ, tươi mát và bổ dưỡng."
-10,Heavy Cream,"Kem béo hàm lượng chất béo cao dùng để làm kem tươi và các loại đồ uống cao cấp."
-11,Whipping Cream,"Kem tươi đánh bông dùng để trang trí và tạo lớp kem mịn mượt cho các loại đồ uống."
-12,Sugar,"Đường dùng để tạo vị ngọt cho đồ uống và các loại thức uống pha chế."
-13,Fruit Jam,"Mứt trái cây đặc sánh dùng để tạo hương vị và màu sắc hấp dẫn cho các loại đồ uống."
-14,Smoothie Base,"Nền sinh tố đặc sệt dùng để pha chế các loại sinh tố thơm ngon và bổ dưỡng."
-15,Fruit Juice Concentrate,"Nước trái cây cô đặc nguyên chất dùng để pha chế các loại đồ uống trái cây tươi mát."
+10,Heavy Cream,Kem béo hàm lượng chất béo cao dùng để làm kem tươi và các loại đồ uống cao cấp.
+11,Whipping Cream,Kem tươi đánh bông dùng để trang trí và tạo lớp kem mịn mượt cho các loại đồ uống.
+12,Sugar,Đường dùng để tạo vị ngọt cho đồ uống và các loại thức uống pha chế.
+13,Fruit Jam,Mứt trái cây đặc sánh dùng để tạo hương vị và màu sắc hấp dẫn cho các loại đồ uống.
+14,Smoothie Base,Nền sinh tố đặc sệt dùng để pha chế các loại sinh tố thơm ngon và bổ dưỡng.
+15,Fruit Juice Concentrate,Nước trái cây cô đặc nguyên chất dùng để pha chế các loại đồ uống trái cây tươi mát.
 16,Matcha,"Bột matcha Nhật Bản chất lượng cao với hương vị đặc trưng, dùng để pha chế các loại đồ uống matcha."
-17,Cream Cheese,"Phô mai kem mềm mịn dùng để tạo lớp cheese foam đặc trưng cho các loại đồ uống."
+17,Cream Cheese,Phô mai kem mềm mịn dùng để tạo lớp cheese foam đặc trưng cho các loại đồ uống.
 18,Cacao,"Bột cacao nguyên chất với hương vị đắng đặc trưng, dùng để pha chế chocolate và trang trí đồ uống."
-19,Chocolate,"Sô-cô-la dùng để tạo hương vị ngọt đắng đặc trưng cho các loại đồ uống và trang trí."
+19,Chocolate,Sô-cô-la dùng để tạo hương vị ngọt đắng đặc trưng cho các loại đồ uống và trang trí.
 20,Coffee Beans,"Hạt cà phê nguyên chất được rang xay chất lượng cao, là nguyên liệu cốt lõi để pha chế cà phê."
 21,Ice Cream,"Kem lạnh mịn mượt dùng để kết hợp với cà phê và đồ uống, tạo nên hương vị độc đáo."

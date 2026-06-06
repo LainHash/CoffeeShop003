@@ -10,9 +10,9 @@ namespace CoffeeShop.Infrastructure.Persistence.Configurations.Catalog
         {
             builder.ToTable("Ingredients");
 
-            builder.HasKey(i => i.IngredientId);
+            builder.HasKey(i => i.Id);
 
-            builder.Property(i => i.IngredientId)
+            builder.Property(i => i.Id)
                 .UseIdentityColumn();
 
             builder.Property(i => i.PublicId)
@@ -22,7 +22,7 @@ namespace CoffeeShop.Infrastructure.Persistence.Configurations.Catalog
             builder.HasIndex(i => i.PublicId)
                 .IsUnique();
 
-            builder.Property(i => i.IngredientName)
+            builder.Property(i => i.Name)
                 .IsRequired()
                 .HasMaxLength(50);
 
@@ -47,15 +47,21 @@ namespace CoffeeShop.Infrastructure.Persistence.Configurations.Catalog
                 .IsRequired()
                 .HasDefaultValue(false);
 
+            builder.Property(i => i.DeletedAt)
+                .IsRequired(false)
+                .HasDefaultValue(null);
+
             // Relationships
             builder.HasOne(i => i.Brand)
                 .WithMany(b => b.Ingredients)
                 .HasForeignKey(i => i.BrandId)
+                .HasPrincipalKey(b => b.Id)
                 .OnDelete(DeleteBehavior.Restrict);
 
             builder.HasOne(i => i.Category)
                 .WithMany(c => c.Ingredients)
                 .HasForeignKey(i => i.CategoryId)
+                .HasPrincipalKey(c => c.Id)
                 .OnDelete(DeleteBehavior.Restrict);
         }
     }

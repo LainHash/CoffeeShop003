@@ -11,9 +11,9 @@ namespace CoffeeShop.Infrastructure.Persistence.Configurations.Catalog
         {
             builder.ToTable("TableEntities");
 
-            builder.HasKey(t => t.TableId);
+            builder.HasKey(t => t.Id);
 
-            builder.Property(t => t.TableId)
+            builder.Property(t => t.Id)
                 .UseIdentityColumn();
 
             builder.Property(t => t.PublicId)
@@ -22,6 +22,9 @@ namespace CoffeeShop.Infrastructure.Persistence.Configurations.Catalog
 
             builder.HasIndex(t => t.PublicId)
                 .IsUnique();
+
+            builder.Property(i => i.Description)
+                .HasMaxLength(500);
 
             builder.Property(t => t.Shape)
                 .IsRequired()
@@ -55,6 +58,10 @@ namespace CoffeeShop.Infrastructure.Persistence.Configurations.Catalog
             builder.Property(t => t.IsDeleted)
                 .IsRequired()
                 .HasDefaultValue(false);
+
+            builder.Property(i => i.DeletedAt)
+                .IsRequired(false)
+                .HasDefaultValue(null);
         }
     }
 }

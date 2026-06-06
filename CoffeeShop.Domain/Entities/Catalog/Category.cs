@@ -1,15 +1,10 @@
+using CoffeeShop.Domain.Common.Models;
+
 namespace CoffeeShop.Domain.Entities.Catalog
 {
-    public class Category
+    public class Category : SoftDeleteEntity
     {
-        public int CategoryId { get; set; }
-        public string CategoryName { get; set; } = null!;
-        public string? Description { get; set; }
-
-        // Audit
-        public DateTime CreatedAt { get; set; } = DateTime.Now;
-        public DateTime UpdatedAt { get; set; } = DateTime.Now;
-        public bool IsDeleted { get; set; }
+        public string Name { get; set; } = null!;
 
         // Navigation Properties
         public virtual ICollection<Product> Products { get; set; } = new List<Product>();

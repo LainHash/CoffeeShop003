@@ -34,8 +34,8 @@ public class CategorySeeder : IDataSeeder
             {
                 context.Categories.Add(new Category
                 {
-                    CategoryId = record.CategoryId,
-                    CategoryName = record.CategoryName,
+                    Id = record.Id,
+                    Name = record.Name,
                     Description = record.Description
                 });
             }
@@ -49,8 +49,8 @@ public class CategorySeeder : IDataSeeder
 
     private class CategoryRecord
     {
-        public int CategoryId { get; set; }
-        public string CategoryName { get; set; } = string.Empty;
+        public int Id { get; set; }
+        public string Name { get; set; } = string.Empty;
         public string? Description { get; set; }
     }
 }

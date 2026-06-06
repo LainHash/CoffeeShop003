@@ -29,8 +29,8 @@ public class IngredientSeeder : IDataSeeder
             {
                 context.Ingredients.Add(new Ingredient
                 {
-                    IngredientId = record.IngredientId,
-                    IngredientName = record.IngredientName,
+                    Id = record.Id,
+                    Name = record.Name,
                     Description = record.Description,
                     BrandId = record.BrandId,
                     CategoryId = record.CategoryId
@@ -46,8 +46,8 @@ public class IngredientSeeder : IDataSeeder
 
     private class IngredientRecord
     {
-        public int IngredientId { get; set; }
-        public string IngredientName { get; set; } = string.Empty;
+        public int Id { get; set; }
+        public string Name { get; set; } = string.Empty;
         public string? Description { get; set; }
         public int BrandId { get; set; }
         public int CategoryId { get; set; }

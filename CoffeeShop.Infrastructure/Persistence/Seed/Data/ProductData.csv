@@ -1,4 +1,4 @@
-﻿ProductId,ProductName,Description,CategoryId,BrandId,IsMadeToOrder
+﻿Id,Name,Description,CategoryId,BrandId,IsMadeToOrder
 1,Espresso,"Cà phê nguyên chất được chiết xuất dưới áp suất cao, mang hương vị đậm đà và lớp crema đặc trưng.",1,,1
 2,Doppio,"Hai shot Espresso kết hợp, cho hương vị mạnh mẽ và hàm lượng caffeine cao hơn Espresso thông thường.",1,,1
 3,Americano,"Espresso pha loãng với nước nóng, giữ hương thơm cà phê nhưng dễ uống và nhẹ hơn.",1,,1

@@ -43,8 +43,8 @@ public class BrandSeeder : IDataSeeder
             {
                 var brand = new Brand
                 {
-                    BrandId = record.BrandId,
-                    BrandName = record.BrandName,
+                    Id = record.Id,
+                    Name = record.Name,
                     Description = record.Description
                 };
                 context.Brands.Add(brand);
@@ -60,8 +60,8 @@ public class BrandSeeder : IDataSeeder
 
     private class BrandRecord
     {
-        public int BrandId { get; set; }
-        public string BrandName { get; set; } = string.Empty;
+        public int Id { get; set; }
+        public string Name { get; set; } = string.Empty;
         public string? Description { get; set; }
     }
 }

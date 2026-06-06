@@ -1,4 +1,4 @@
-IngredientId,IngredientName,Description,BrandId,CategoryId
+﻿Id,Name,Description,BrandId,CategoryId
 1,Flavored Syrup,,1,5
 2,Flavored Syrup,,2,5
 3,Flavored Syrup,,3,5

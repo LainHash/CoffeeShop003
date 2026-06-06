@@ -18,18 +18,14 @@ namespace CoffeeShop.API.Controllers.Production
         public async Task<IActionResult> GetRecipes()
         {
             var result = await _mediator.Send(new GetRecipesQuery());
-            return Ok(result);
+            return  StatusCode(result.StatusCode, result);
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetRecipe(Guid id)
         {
             var result = await _mediator.Send(new GetRecipeByPublicIdQuery(id));
-            if (!result.IsSuccess)
-            {
-                return BadRequest(result);
-            }
-            return Ok(result);
+            return StatusCode(result.StatusCode, result);
         }
     }
 }

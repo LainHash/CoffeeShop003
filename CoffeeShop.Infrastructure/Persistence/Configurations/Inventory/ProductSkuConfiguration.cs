@@ -1,3 +1,4 @@
+using CoffeeShop.Domain.Entities.Catalog;
 using CoffeeShop.Domain.Entities.Inventory;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
@@ -10,10 +11,20 @@ namespace CoffeeShop.Infrastructure.Persistence.Configurations.Inventory
         {
             builder.ToTable("ProductSkus");
 
-            builder.HasKey(p => p.ProductSkuId);
+            builder.HasKey(p => p.Id);
 
-            builder.Property(p => p.ProductSkuId)
+            builder.Property(p => p.Id)
                 .UseIdentityColumn();
+
+            builder.Property(t => t.PublicId)
+                .IsRequired()
+                .HasDefaultValueSql("newid()");
+
+            builder.HasIndex(t => t.PublicId)
+                .IsUnique();
+
+            builder.Property(i => i.Description)
+                .HasMaxLength(500);
 
             builder.Property(p => p.UnitPrice)
                 .IsRequired()
@@ -43,8 +54,9 @@ namespace CoffeeShop.Infrastructure.Persistence.Configurations.Inventory
 
             // Relationship
             builder.HasOne(p => p.Product)
-                .WithOne(pr => pr.ProductSku)
-                .HasForeignKey<ProductSku>(p => p.ProductId)
+                .WithOne(ps => ps.ProductSku)
+                .HasForeignKey<ProductSku>(ps => ps.ProductId)
+                .HasPrincipalKey<Product>(p => p.Id)
                 .OnDelete(DeleteBehavior.Restrict);
         }
     }

@@ -1,14 +1,17 @@
-﻿namespace CoffeeShop.Application.Features.Catalog.Products.DTOs
+﻿using CoffeeShop.Application.Features.Misc.Images.DTOs;
+
+namespace CoffeeShop.Application.Features.Catalog.Products.DTOs
 {
     public class ProductDTO
     {
         public Guid PublicId { get; set; }
-        public string ProductName { get; set; } = null!;
+        public string Name { get; set; } = null!;
         public string? Description { get; set; }
         public bool IsMadeToOrder { get; set; }
 
         public string? BrandName { get; set; }
         public string CategoryName { get; set; } = null!;
+        public List<ImageDTO> Images { get; set; } = new List<ImageDTO>();
 
         public decimal UnitPrice { get; set; }
         public string Unit { get; set; } = null!;

@@ -10,12 +10,12 @@ namespace CoffeeShop.Infrastructure.Persistence.Configurations.Catalog
         {
             builder.ToTable("Categories");
 
-            builder.HasKey(c => c.CategoryId);
+            builder.HasKey(c => c.Id);
 
-            builder.Property(c => c.CategoryId)
+            builder.Property(c => c.Id)
                 .UseIdentityColumn();
 
-            builder.Property(c => c.CategoryName)
+            builder.Property(c => c.Name)
                 .IsRequired()
                 .HasMaxLength(50);
 
@@ -33,6 +33,10 @@ namespace CoffeeShop.Infrastructure.Persistence.Configurations.Catalog
             builder.Property(c => c.IsDeleted)
                 .IsRequired()
                 .HasDefaultValue(false);
+
+            builder.Property(p => p.DeletedAt)
+                .IsRequired(false)
+                .HasDefaultValue(null);
         }
     }
 }

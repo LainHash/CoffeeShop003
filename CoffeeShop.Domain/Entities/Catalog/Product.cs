@@ -1,20 +1,13 @@
+using CoffeeShop.Domain.Common.Models;
 using CoffeeShop.Domain.Entities.Inventory;
 using CoffeeShop.Domain.Entities.Production.Recipes;
 
 namespace CoffeeShop.Domain.Entities.Catalog
 {
-    public class Product
+    public class Product : SoftDeleteEntity
     {
-        public int ProductId { get; set; }
-        public Guid PublicId { get; set; } = Guid.NewGuid();
-        public string ProductName { get; set; } = null!;
-        public string? Description { get; set; }
+        public string Name { get; set; } = null!;
         public bool IsMadeToOrder { get; set; }
-
-        // Audit
-        public DateTime CreatedAt { get; set; } = DateTime.Now;
-        public DateTime UpdatedAt { get; set; } = DateTime.Now;
-        public bool IsDeleted { get; set; }
 
         // Foreign Keys
         public int CategoryId { get; set; }

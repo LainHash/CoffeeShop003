@@ -1,10 +1,10 @@
+using CoffeeShop.Domain.Common.Models;
 using CoffeeShop.Domain.Entities.Catalog;
 
 namespace CoffeeShop.Domain.Entities.Inventory
 {
-    public class IngredientSku
+    public class IngredientSku : BaseEntity
     {
-        public int IngredientSkuId { get; set; }
         public decimal UnitPrice { get; set; }
         public string Unit { get; set; } = null!;
         public decimal Stock { get; set; }

@@ -10,12 +10,12 @@ namespace CoffeeShop.Infrastructure.Persistence.Configurations.Catalog
         {
             builder.ToTable("Brands");
 
-            builder.HasKey(b => b.BrandId);
+            builder.HasKey(b => b.Id);
 
-            builder.Property(b => b.BrandId)
+            builder.Property(b => b.Id)
                 .UseIdentityColumn();
 
-            builder.Property(b => b.BrandName)
+            builder.Property(b => b.Name)
                 .IsRequired()
                 .HasMaxLength(50);
 
@@ -33,6 +33,10 @@ namespace CoffeeShop.Infrastructure.Persistence.Configurations.Catalog
             builder.Property(b => b.IsDeleted)
                 .IsRequired()
                 .HasDefaultValue(false);
+
+            builder.Property(p => p.DeletedAt)
+                .IsRequired(false)
+                .HasDefaultValue(null);
         }
     }
 }

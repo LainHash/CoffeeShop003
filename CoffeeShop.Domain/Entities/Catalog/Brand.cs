@@ -1,15 +1,10 @@
+using CoffeeShop.Domain.Common.Models;
+
 namespace CoffeeShop.Domain.Entities.Catalog
 {
-    public class Brand
+    public class Brand : SoftDeleteEntity
     {
-        public int BrandId { get; set; }
-        public string BrandName { get; set; } = null!;
-        public string? Description { get; set; }
-
-        // Audit
-        public DateTime CreatedAt { get; set; } = DateTime.Now;
-        public DateTime UpdatedAt { get; set; } = DateTime.Now;
-        public bool IsDeleted { get; set; }
+        public string Name { get; set; } = null!;
 
         // Navigation Properties
         public virtual ICollection<Product> Products { get; set; } = new List<Product>();

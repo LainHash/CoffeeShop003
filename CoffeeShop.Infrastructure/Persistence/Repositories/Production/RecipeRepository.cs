@@ -2,6 +2,7 @@
 using CoffeeShop.Application.Features.Production.Recipes.DTOs;
 using CoffeeShop.Application.Interfaces.Repositories.Production;
 using Microsoft.EntityFrameworkCore;
+using System.Net;
 
 namespace CoffeeShop.Infrastructure.Persistence.Repositories.Production
 {
@@ -13,7 +14,7 @@ namespace CoffeeShop.Infrastructure.Persistence.Repositories.Production
             _context = context;
         }
 
-        public async Task<Result<List<RecipeDTO>>> GetRecipesAsync()
+        public async Task<Result<List<RecipeDTO>>> GetRecipesAsync(CancellationToken cancellationToken = default)
         {
             var query = _context.Recipes
                 .Include(r => r.Product)
@@ -34,14 +35,14 @@ namespace CoffeeShop.Infrastructure.Persistence.Repositories.Production
                     PublicId = r.PublicId,
                     Inspiration = r.Inspiration,
                     Description = r.Description,
-                    ProductName = r.Product.ProductName,
+                    ProductName = r.Product.Name,
                     Ingredients = r.RecipeIngredients.Select(ri => new RecipeIngredient
                     {
-                        IngredientName = ri.Ingredient.IngredientName,
+                        IngredientName = ri.Ingredient.Name,
                         Quantity = ri.Quantity,
                         Unit = ri.Ingredient.IngredientSku.Unit,
-                        BrandName = ri.Ingredient.Brand.BrandName,
-                        CategoryName = ri.Ingredient.Category.CategoryName
+                        BrandName = ri.Ingredient.Brand.Name,
+                        CategoryName = ri.Ingredient.Category.Name
                     }).ToList(),
                     Steps = r.RecipeSteps.Select(rs => new RecipeStep
                     {
@@ -53,11 +54,12 @@ namespace CoffeeShop.Infrastructure.Persistence.Repositories.Production
                     UpdatedAt = r.UpdatedAt,
                     IsDeleted = r.IsDeleted
                 })
-                .ToListAsync();
-            return Result<List<RecipeDTO>>.SuccessResponse(recipes, "Recipes retrieved successfully.");
+                .ToListAsync(cancellationToken);
+            return Result<List<RecipeDTO>>
+                .SuccessResponse(recipes, "Recipes retrieved successfully.", HttpStatusCode.OK);
         }
 
-        public async Task<Result<RecipeDTO>> GetRecipeByPublicIdAsync(Guid id)
+        public async Task<Result<RecipeDTO>> GetRecipeByPublicIdAsync(Guid id, CancellationToken cancellationToken = default)
         {
             var query = _context.Recipes
                 .Include(r => r.Product)
@@ -78,14 +80,14 @@ namespace CoffeeShop.Infrastructure.Persistence.Repositories.Production
                     PublicId = r.PublicId,
                     Inspiration = r.Inspiration,
                     Description = r.Description,
-                    ProductName = r.Product.ProductName,
+                    ProductName = r.Product.Name,
                     Ingredients = r.RecipeIngredients.Select(ri => new RecipeIngredient
                     {
-                        IngredientName = ri.Ingredient.IngredientName,
+                        IngredientName = ri.Ingredient.Name,
                         Quantity = ri.Quantity,
                         Unit = ri.Ingredient.IngredientSku.Unit,
-                        BrandName = ri.Ingredient.Brand.BrandName,
-                        CategoryName = ri.Ingredient.Category.CategoryName
+                        BrandName = ri.Ingredient.Brand.Name,
+                        CategoryName = ri.Ingredient.Category.Name
                     }).ToList(),
                     Steps = r.RecipeSteps.Select(rs => new RecipeStep
                     {
@@ -97,12 +99,14 @@ namespace CoffeeShop.Infrastructure.Persistence.Repositories.Production
                     UpdatedAt = r.UpdatedAt,
                     IsDeleted = r.IsDeleted
                 })
-                .FirstOrDefaultAsync();
+                .FirstOrDefaultAsync(cancellationToken);
             if (recipe == null)
             {
-                return Result<RecipeDTO>.ErrorResponse("Recipe not found.");
+                return Result<RecipeDTO>
+                    .ErrorResponse("Recipe not found.", HttpStatusCode.NotFound);
             }
-            return Result<RecipeDTO>.SuccessResponse(recipe, "Recipe retrieved successfully.");
+            return Result<RecipeDTO>
+                .SuccessResponse(recipe, "Recipe retrieved successfully.", HttpStatusCode.OK);
         }
     }
 }

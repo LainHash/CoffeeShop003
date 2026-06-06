@@ -20,12 +20,10 @@
     <Folder Include="Behaviors\" />
     <Folder Include="Features\Catalog\Brands\Commands\" />
     <Folder Include="Features\Catalog\Categories\Commands\" />
-    <Folder Include="Features\Catalog\Ingredients\Commands\" />
-    <Folder Include="Features\Catalog\Products\Commands\" />
+    <Folder Include="Features\Catalog\TableEntities\Commands\" />
     <Folder Include="Features\Inventory\" />
-    <Folder Include="Features\Misc\" />
     <Folder Include="Features\Inventory\StockTransactions\" />
-    <Folder Include="Features\Misc\Images\" />
+    <Folder Include="Features\Misc\Images\Commands\" />
     <Folder Include="Features\Production\Recipes\Commands\" />
     <Folder Include="Interfaces\Services\" />
   </ItemGroup>

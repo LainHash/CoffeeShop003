@@ -19,11 +19,7 @@ namespace CoffeeShop.API.Controllers.Catalog
         public async Task<IActionResult> GetCategories()
         {
             var result = await _mediator.Send(new GetCategoriesQuery());
-            if (!result.IsSuccess)
-            {
-                return BadRequest(result.Message);
-            }
-            return Ok(result);
+            return StatusCode(result.StatusCode, result);
         }
     }
 }

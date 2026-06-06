@@ -1,10 +1,10 @@
+using CoffeeShop.Domain.Common.Models;
 using CoffeeShop.Domain.Entities.Catalog;
 
 namespace CoffeeShop.Domain.Entities.Production.Recipes
 {
-    public class RecipeIngredient
+    public class RecipeIngredient : BaseEntity
     {
-        public int RecipeIngredientId { get; set; }
         public int RecipeId { get; set; }
         public int IngredientId { get; set; }
         public int Quantity { get; set; }

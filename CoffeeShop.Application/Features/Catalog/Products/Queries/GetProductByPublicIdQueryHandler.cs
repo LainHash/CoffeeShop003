@@ -15,7 +15,7 @@ namespace CoffeeShop.Application.Features.Catalog.Products.Queries
 
         public async Task<Result<ProductDTO>> Handle(GetProductByPublicIdQuery request, CancellationToken cancellationToken)
         {
-            return await _productRepository.GetProductByPublicIdAsync(request.Id);
+            return await _productRepository.GetProductByPublicIdAsync(request.Id, cancellationToken);
         }
     }
 }

@@ -29,7 +29,7 @@ public class RecipeStepSeeder : IDataSeeder
             {
                 context.RecipeSteps.Add(new RecipeStep
                 {
-                    RecipeStepId = record.RecipeStepId,
+                    Id = record.Id,
                     RecipeId = record.RecipeId,
                     StepNumber = record.StepNumber,
                     Description = record.Description,
@@ -46,7 +46,7 @@ public class RecipeStepSeeder : IDataSeeder
 
     private class RecipeStepRecord
     {
-        public int RecipeStepId { get; set; }
+        public int Id { get; set; }
         public int RecipeId { get; set; }
         public int StepNumber { get; set; }
         public string Description { get; set; } = string.Empty;

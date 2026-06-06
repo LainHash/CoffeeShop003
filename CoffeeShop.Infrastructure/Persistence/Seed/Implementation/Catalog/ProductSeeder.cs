@@ -29,10 +29,11 @@ public class ProductSeeder : IDataSeeder
             {
                 context.Products.Add(new Product
                 {
-                    ProductId = record.ProductId,
-                    ProductName = record.ProductName,
+                    Id = record.Id,
+                    Name = record.Name,
                     Description = record.Description,
                     CategoryId = record.CategoryId,
+                    BrandId = record.BrandId,
                     IsMadeToOrder = record.IsMadeToOrder == 1
                 });
             }
@@ -46,10 +47,11 @@ public class ProductSeeder : IDataSeeder
 
     private class ProductRecord
     {
-        public int ProductId { get; set; }
-        public string ProductName { get; set; } = string.Empty;
+        public int Id { get; set; }
+        public string Name { get; set; } = string.Empty;
         public string? Description { get; set; }
         public int CategoryId { get; set; }
+        public int? BrandId { get; set; }
         public int IsMadeToOrder { get; set; }
     }
 }

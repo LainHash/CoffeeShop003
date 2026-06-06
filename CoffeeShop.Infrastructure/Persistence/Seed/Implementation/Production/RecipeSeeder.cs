@@ -29,7 +29,7 @@ public class RecipeSeeder : IDataSeeder
             {
                 context.Recipes.Add(new Recipe
                 {
-                    RecipeId = record.RecipeId,
+                    Id = record.Id,
                     Inspiration = record.Inspiration ?? string.Empty,
                     ProductId = record.ProductId
                 });
@@ -44,7 +44,7 @@ public class RecipeSeeder : IDataSeeder
 
     private class RecipeRecord
     {
-        public int RecipeId { get; set; }
+        public int Id { get; set; }
         public string? Inspiration { get; set; }
         public int ProductId { get; set; }
     }

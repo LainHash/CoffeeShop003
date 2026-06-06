@@ -13,14 +13,15 @@ namespace CoffeeShop.Infrastructure.Persistence.Repositories.Catalog
             _context = context;
         }
 
-        public async Task<Result<List<BrandDTO>>> GetBrandsAsync()
+        public async Task<Result<List<BrandDTO>>> GetBrandsAsync(CancellationToken cancellationToken = default)
         {
             var brands = await _context.Brands.Select(b => new BrandDTO
             {
-                BrandName = b.BrandName,
+                Name = b.Name,
                 Description = b.Description
-            }).ToListAsync();
-            return Result<List<BrandDTO>>.SuccessResponse(brands, "Brands retrieved successfully.");
+            }).ToListAsync(cancellationToken);
+            return Result<List<BrandDTO>>
+                .SuccessResponse(brands, "Brands retrieved successfully.");
         }
     }
 }

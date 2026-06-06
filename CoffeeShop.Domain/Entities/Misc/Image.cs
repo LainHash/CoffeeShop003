@@ -1,8 +1,9 @@
+using CoffeeShop.Domain.Common.Models;
+
 namespace CoffeeShop.Domain.Entities.Misc
 {
-    public class Image
+    public class Image : BaseEntity
     {
-        public int ImageId { get; set; }
         public string ImageUrl { get; set; } = null!;
         public bool IsPrimary { get; set; }
         public int ReferenceId { get; set; }

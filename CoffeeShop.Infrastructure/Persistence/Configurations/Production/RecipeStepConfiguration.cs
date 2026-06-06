@@ -10,10 +10,17 @@ namespace CoffeeShop.Infrastructure.Persistence.Configurations.Production
         {
             builder.ToTable("RecipeSteps");
 
-            builder.HasKey(rs => rs.RecipeStepId);
+            builder.HasKey(rs => rs.Id);
 
-            builder.Property(rs => rs.RecipeStepId)
+            builder.Property(rs => rs.Id)
                 .UseIdentityColumn();
+
+            builder.Property(r => r.PublicId)
+                .IsRequired()
+                .HasDefaultValueSql("newid()");
+
+            builder.HasIndex(r => r.PublicId)
+                .IsUnique();
 
             builder.Property(rs => rs.RecipeId)
                 .IsRequired();
@@ -35,6 +42,7 @@ namespace CoffeeShop.Infrastructure.Persistence.Configurations.Production
             builder.HasOne(rs => rs.Recipe)
                 .WithMany(r => r.RecipeSteps)
                 .HasForeignKey(rs => rs.RecipeId)
+                .HasPrincipalKey(r => r.Id)
                 .OnDelete(DeleteBehavior.Restrict);
         }
     }

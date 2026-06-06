@@ -15,7 +15,7 @@ namespace CoffeeShop.Application.Features.Catalog.Categories.Queries
 
         public async Task<Result<List<CategoryDTO>>> Handle(GetCategoriesQuery request, CancellationToken cancellationToken)
         {
-            return await _categoryRepository.GetCategoriesAsync();
+            return await _categoryRepository.GetCategoriesAsync(cancellationToken);
         }
     }
 }

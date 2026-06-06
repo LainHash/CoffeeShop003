@@ -1,4 +1,4 @@
-ImageId,ImageUrl,IsPrimary,ReferenceId,Type
+﻿Id,ImageUrl,IsPrimary,ReferenceId,Type
 1,https://www.sharmispassions.com/wp-content/uploads/2012/07/espresso-coffee-recipe022.jpg,1,1,Product
 2,https://cdn.shopify.com/s/files/1/0838/4525/files/Doppio_Espresso_1024x1024.jpg?v=1765302631,1,2,Product
 3,https://file.hstatic.net/200000079049/file/americano-1_6b32372e76b84139a0b4935c96d49d05.jpeg,1,3,Product
@@ -11,3 +11,19 @@ ImageId,ImageUrl,IsPrimary,ReferenceId,Type
 10,https://file.hstatic.net/200000079049/file/espresso-con-panna-1_8b10e34392a44c1cb0f2d0f7a92ecba1.jpeg,1,10,Product
 11,https://simexcodl.com.vn/wp-content/uploads/2024/07/affogato-la-gi-3.jpg,1,11,Product
 12,https://tarasmulticulturaltable.com/wp-content/uploads/2019/03/Irish-Coffee-2-of-3.jpg,1,12,Product
+13,https://media.istockphoto.com/id/487787108/vi/anh/lon-coca-cola-tr%C3%AAn-b%C4%83ng.jpg?s=2048x2048&w=is&k=20&c=kAH7atHCcAx8BMTMo7feiHjMlqzxk1E2qXDE5kmlsrs=,1,13,Product
+14,https://bizweb.dktcdn.net/100/446/826/files/4.jpg?v=1656846653854,1,14,Product
+15,https://snackstar.in/cdn/shop/files/7up_sugar_free.png?v=1775646118,1,15,Product
+16,https://www.shutterstock.com/image-photo/poznan-pol-apr-02-2025-260nw-2611900329.jpg,1,16,Product
+17,"https://m.media-amazon.com/images/I/61S5o-suL5L._AC_UF350,350_QL80_.jpg",1,17,Product
+18,https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhCUULpORgYifQoaIK6C5VTKrQEZa2_PQ8HQ&s,1,18,Product
+19,https://kickinchicken.com/wp-content/uploads/2023/08/Red-Bull-Energy-Drink.jpg,1,19,Product
+20,https://goinuocuong.vn/wp-content/uploads/2017/07/bottle-1-1.png,1,20,Product
+21,https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYtILIloaC2GI6-TExLhy8NbOSCCqOlMqtHQ&s,1,21,Product
+22,https://alpineella.com/wp-content/uploads/2025/02/featured-image-chocolate-espresso-muffins.jpg,1,22,Product
+23,https://www.cookwithmanali.com/wp-content/uploads/2020/12/Eggless-Danish-Butter-Cookies.jpg,1,23,Product
+24,https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdBW4W-3x_osH5jYgOQR69xyqjhHjE2xH1Ag&s,1,24,Product
+25,https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUV0ms88L-5rAl_QYenn5QCmJLodDAYmAu0g&s,1,25,Product
+26,https://lygiavien.com/cdn/shop/articles/banh-tiramisu-trai-nghiem-mon-trang-mieng-y-ngon-kho-quen.webp?v=1724305946,1,26,Product
+27,https://www.casa-azzurra-italia.fr/wp-content/uploads/2024/04/croissants-farcis-jambon-et-stracciatella.jpg,1,27,Product
+28,https://bigdeliciouslife.com/wp-content/uploads/2026/01/Banana-Bread-12_1.jpg,1,28,Product

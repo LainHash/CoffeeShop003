@@ -1,4 +1,4 @@
-﻿BrandId,BrandName,Description
+﻿Id,Name,Description
 1,Caramel Syrup Monin,Syrup tạo vị
 2,SIRO MONIN ĐÀO 700g MONIN,Syrup tạo vị
 3,DaVinci Gourmet,Syrup tạo vị
@@ -37,3 +37,9 @@
 36,illy,Ca phe hat nguyen chat
 37,Lavazza,Ca phe hat nguyen chat
 38,Breyers,Kem vani cao cap
+39,Coca-Cola,Nuoc giai khat co gas
+40,PepsiCo,Nuoc giai khat co gas
+41,Red Bull,Nuoc tang luc
+42,La Vie,Nuoc khoang thien nhien
+43,ABC Bakery,Banh ngot va do an nhe
+44,Tous les Jours,Banh ngot cao cap phong cach Han Quoc

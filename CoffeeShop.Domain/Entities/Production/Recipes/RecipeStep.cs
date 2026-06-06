@@ -1,11 +1,13 @@
+using CoffeeShop.Domain.Common.Models;
+using System.ComponentModel;
+
 namespace CoffeeShop.Domain.Entities.Production.Recipes
 {
-    public class RecipeStep
+    public class RecipeStep : BaseEntity
     {
-        public int RecipeStepId { get; set; }
         public int RecipeId { get; set; }
+        public new string Description { get; set; } = null!;
         public int StepNumber { get; set; }
-        public string Description { get; set; } = null!;
         public int DurationSeconds { get; set; }
 
         // Navigation Properties

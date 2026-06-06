@@ -10,10 +10,24 @@ namespace CoffeeShop.Infrastructure.Persistence.Configurations.Misc
         {
             builder.ToTable("Images");
 
-            builder.HasKey(i => i.ImageId);
+            builder.HasKey(i => i.Id);
 
-            builder.Property(i => i.ImageId)
+            builder.HasIndex(x => new { x.ReferenceId, x.Type })
+                .HasFilter("[IsPrimary] = 1")
+                .IsUnique();
+
+            builder.Property(i => i.Id)
                 .UseIdentityColumn();
+
+            builder.Property(r => r.PublicId)
+                .IsRequired()
+                .HasDefaultValueSql("newid()");
+
+            builder.HasIndex(r => r.PublicId)
+                .IsUnique();
+
+            builder.Property(r => r.Description)
+                .HasMaxLength(500);
 
             builder.Property(i => i.ImageUrl)
                 .IsRequired()

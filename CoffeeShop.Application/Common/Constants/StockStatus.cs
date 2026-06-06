@@ -1,4 +1,4 @@
-﻿namespace CoffeeShop.Domain.Common.Constants
+﻿namespace CoffeeShop.Application.Common.Constants
 {
     public static class StockStatus
     {

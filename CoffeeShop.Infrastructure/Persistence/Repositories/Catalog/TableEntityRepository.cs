@@ -85,6 +85,6 @@ namespace CoffeeShop.Infrastructure.Persistence.Repositories.Catalog
                 .SuccessResponse(table, "Table retrieved successfully.", HttpStatusCode.OK);
         }
 
-        
+
     }
 }

@@ -64,7 +64,7 @@ namespace CoffeeShop.Infrastructure.Persistence.Repositories.Catalog
                 .SuccessResponse(ingredients, "Ingredients retrieved successfully.", HttpStatusCode.OK);
         }
 
-        public async Task<Result<IngredientDTO>> GetIngredientByPublicIdAsync(Guid id, 
+        public async Task<Result<IngredientDTO>> GetIngredientByPublicIdAsync(Guid id,
                                                                                 CancellationToken cancellationToken = default)
         {
             var query = _context.Ingredients
@@ -115,7 +115,7 @@ namespace CoffeeShop.Infrastructure.Persistence.Repositories.Catalog
                 .SuccessResponse(ingredient, "Ingredient retrieved successfully.", HttpStatusCode.OK);
         }
 
-        public async Task<Result<IngredientDTO>> CreateIngredientAsync(CreateIngredientDTO createIngredientDTO, 
+        public async Task<Result<IngredientDTO>> CreateIngredientAsync(CreateIngredientDTO createIngredientDTO,
                                                                         CancellationToken cancellationToken = default)
         {
             using var transaction = await _context.Database.BeginTransactionAsync(cancellationToken);
@@ -182,7 +182,7 @@ namespace CoffeeShop.Infrastructure.Persistence.Repositories.Catalog
             }
         }
 
-        public async Task<Result<IngredientDTO>> UpdateIngredientAsync(Guid id, UpdateIngredientDTO updateIngredientDTO, 
+        public async Task<Result<IngredientDTO>> UpdateIngredientAsync(Guid id, UpdateIngredientDTO updateIngredientDTO,
                                                                         CancellationToken cancellationToken = default)
         {
             var query = _context.Ingredients
@@ -247,7 +247,7 @@ namespace CoffeeShop.Infrastructure.Persistence.Repositories.Catalog
                 .SuccessResponse(ingredientDTO, "Ingredient updated successfully.", HttpStatusCode.OK);
         }
 
-        public async Task<Result> DeleteIngredientAsync(Guid id, 
+        public async Task<Result> DeleteIngredientAsync(Guid id,
                                                         CancellationToken cancellationToken = default)
         {
             var ingredient = await _context.Ingredients
@@ -257,7 +257,7 @@ namespace CoffeeShop.Infrastructure.Persistence.Repositories.Catalog
                 return Result
                     .ErrorResponse("Ingredient not found.", HttpStatusCode.NotFound);
             }
-            if(ingredient.IsDeleted)
+            if (ingredient.IsDeleted)
             {
                 return Result
                     .ErrorResponse("Ingredient is already deleted.", HttpStatusCode.Conflict);
@@ -269,7 +269,7 @@ namespace CoffeeShop.Infrastructure.Persistence.Repositories.Catalog
                 .SuccessResponse("Ingredient deleted successfully.", HttpStatusCode.OK);
         }
 
-        public async Task<Result> RestoreIngredientAsync(Guid id, 
+        public async Task<Result> RestoreIngredientAsync(Guid id,
                                                         CancellationToken cancellationToken = default)
         {
             var ingredient = await _context.Ingredients

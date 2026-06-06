@@ -33,12 +33,12 @@ public class BrandSeeder : IDataSeeder
         });
 
         var records = csv.GetRecords<BrandRecord>().ToList();
-        
+
         var strategy = context.Database.CreateExecutionStrategy();
         await strategy.ExecuteAsync(async () =>
         {
             using var transaction = await context.Database.BeginTransactionAsync();
-            
+
             foreach (var record in records)
             {
                 var brand = new Brand
@@ -53,7 +53,7 @@ public class BrandSeeder : IDataSeeder
             await context.Database.ExecuteSqlRawAsync("SET IDENTITY_INSERT Brands ON");
             await context.SaveChangesAsync();
             await context.Database.ExecuteSqlRawAsync("SET IDENTITY_INSERT Brands OFF");
-            
+
             await transaction.CommitAsync();
         });
     }

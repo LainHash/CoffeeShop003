@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 namespace CoffeeShop.Infrastructure.Persistence.Configurations.Catalog
 {
     public class TableEntityConfiguration : IEntityTypeConfiguration<TableEntity>
-    { 
+    {
         public void Configure(EntityTypeBuilder<TableEntity> builder)
         {
             builder.ToTable("TableEntities");
@@ -36,7 +36,7 @@ namespace CoffeeShop.Infrastructure.Persistence.Configurations.Catalog
             builder.Property(t => t.FloorNumber)
                 .IsRequired();
 
-            builder.HasIndex(t => new {t.TableNumber, t.FloorNumber })
+            builder.HasIndex(t => new { t.TableNumber, t.FloorNumber })
                 .IsUnique();
 
             builder.Property(t => t.Capacity)

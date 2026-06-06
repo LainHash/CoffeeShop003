@@ -1,7 +1,7 @@
-using System.Net;
-using System.Text.Json;
 using CoffeeShop.Application.Common.Models;
 using FluentValidation;
+using System.Net;
+using System.Text.Json;
 
 namespace CoffeeShop.API.Middleware;
 
@@ -32,7 +32,7 @@ public class ExceptionHandlingMiddleware
     private static Task HandleExceptionAsync(HttpContext context, Exception exception)
     {
         context.Response.ContentType = "application/json";
-        
+
         var statusCode = HttpStatusCode.InternalServerError;
         var message = "An internal server error occurred.";
 
@@ -43,7 +43,7 @@ public class ExceptionHandlingMiddleware
                 message = "Validation failed: " + string.Join(", ", validationException.Errors.Select(e => e.ErrorMessage));
                 break;
             case KeyNotFoundException _:
-            // case NotFoundException _: // Add custom NotFoundException if exists
+                // case NotFoundException _: // Add custom NotFoundException if exists
                 statusCode = HttpStatusCode.NotFound;
                 message = "Resource not found.";
                 break;
@@ -54,7 +54,7 @@ public class ExceptionHandlingMiddleware
 
         context.Response.StatusCode = (int)statusCode;
         var response = Result<object>.ErrorResponse(message);
-        
+
         var options = new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase };
         return context.Response.WriteAsync(JsonSerializer.Serialize(response, options));
     }

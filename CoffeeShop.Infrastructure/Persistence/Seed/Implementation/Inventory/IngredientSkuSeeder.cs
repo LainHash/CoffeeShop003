@@ -20,7 +20,7 @@ public class IngredientSkuSeeder : IDataSeeder
         using var csv = new CsvReader(reader, new CsvConfiguration(CultureInfo.InvariantCulture) { HasHeaderRecord = true });
 
         var records = csv.GetRecords<IngredientSkuRecord>().ToList();
-        
+
         var strategy = context.Database.CreateExecutionStrategy();
         await strategy.ExecuteAsync(async () =>
         {

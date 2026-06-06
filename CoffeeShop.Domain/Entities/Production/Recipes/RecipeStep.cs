@@ -1,5 +1,4 @@
 using CoffeeShop.Domain.Common.Models;
-using System.ComponentModel;
 
 namespace CoffeeShop.Domain.Entities.Production.Recipes
 {

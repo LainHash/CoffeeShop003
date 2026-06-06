@@ -1,6 +1,4 @@
-﻿using CoffeeShop.Application.Common.Models;
-
-namespace CoffeeShop.Application.Common.Constants
+﻿namespace CoffeeShop.Application.Common.Constants
 {
     public static class PageConstants
     {

@@ -5,7 +5,6 @@ using CoffeeShop.Application.Features.Catalog.Ingredients.Commands.Delete;
 using CoffeeShop.Application.Features.Catalog.Ingredients.Commands.Update;
 using CoffeeShop.Application.Features.Catalog.Ingredients.DTOs;
 using CoffeeShop.Application.Features.Catalog.Ingredients.Queries;
-using CoffeeShop.Application.Features.Catalog.Products.DTOs;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 

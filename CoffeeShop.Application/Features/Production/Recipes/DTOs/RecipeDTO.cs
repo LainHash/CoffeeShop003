@@ -14,7 +14,7 @@
         public DateTime UpdatedAt { get; set; } = DateTime.Now;
         public bool IsDeleted { get; set; }
 
-        
+
     }
 
     public class RecipeIngredient
@@ -25,10 +25,10 @@
         public string BrandName { get; set; } = null!;
         public string CategoryName { get; set; } = null!;
 
-        public string Unit { get; set; } = null!; 
+        public string Unit { get; set; } = null!;
     }
 
-    public class RecipeStep 
+    public class RecipeStep
     {
         public int StepNumber { get; set; }
         public string Description { get; set; } = null!;

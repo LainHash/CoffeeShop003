@@ -38,14 +38,14 @@ public class DatabaseSeeder
 
             await SeedAsync<ProductSeeder>(context);
             await SeedAsync<IngredientSeeder>(context);
-            
+
             await SeedAsync<ProductSkuSeeder>(context);
             await SeedAsync<IngredientSkuSeeder>(context);
-            
+
             await SeedAsync<RecipeSeeder>(context);
             await SeedAsync<RecipeIngredientSeeder>(context);
             await SeedAsync<RecipeStepSeeder>(context);
-            
+
             await SeedAsync<ImageSeeder>(context);
             await SeedAsync<StockTransactionSeeder>(context);
         }

@@ -20,7 +20,7 @@ public class RecipeSeeder : IDataSeeder
         using var csv = new CsvReader(reader, new CsvConfiguration(CultureInfo.InvariantCulture) { HasHeaderRecord = true });
 
         var records = csv.GetRecords<RecipeRecord>().ToList();
-        
+
         var strategy = context.Database.CreateExecutionStrategy();
         await strategy.ExecuteAsync(async () =>
         {

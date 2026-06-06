@@ -16,10 +16,10 @@ namespace CoffeeShop.Application.Interfaces.Repositories.Catalog
         Task<Result<ProductDTO>> UpdateProductAsync(Guid id, UpdateProductDTO updateProductDTO,
                                                     CancellationToken cancellationToken = default);
 
-        Task<Result> DeleteProductAsync(Guid id, 
+        Task<Result> DeleteProductAsync(Guid id,
                                         CancellationToken cancellationToken = default);
 
-        Task<Result> RestoreProductAsync(Guid id, 
+        Task<Result> RestoreProductAsync(Guid id,
                                         CancellationToken cancellationToken = default);
 
     }

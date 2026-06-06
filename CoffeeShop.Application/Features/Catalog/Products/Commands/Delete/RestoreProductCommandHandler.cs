@@ -1,5 +1,4 @@
 ﻿using CoffeeShop.Application.Common.Models;
-using CoffeeShop.Application.Features.Catalog.Products.DTOs;
 using CoffeeShop.Application.Interfaces.Repositories.Catalog;
 using MediatR;
 

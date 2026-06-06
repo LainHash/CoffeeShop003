@@ -10,10 +10,20 @@ namespace CoffeeShop.Infrastructure.Persistence.Configurations.Inventory
         {
             builder.ToTable("StockTransactions");
 
-            builder.HasKey(s => s.StockTransactionId);
+            builder.HasKey(s => s.Id);
 
-            builder.Property(s => s.StockTransactionId)
+            builder.Property(s => s.Id)
                 .UseIdentityColumn();
+
+            builder.Property(t => t.PublicId)
+                .IsRequired()
+                .HasDefaultValueSql("newid()");
+
+            builder.HasIndex(t => t.PublicId)
+                .IsUnique();
+
+            builder.Property(i => i.Description)
+                .HasMaxLength(500);
 
             builder.Property(s => s.Type)
                 .IsRequired()

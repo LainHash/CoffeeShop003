@@ -29,7 +29,7 @@ public class IngredientSkuSeeder : IDataSeeder
             {
                 context.IngredientSkus.Add(new IngredientSku
                 {
-                    IngredientSkuId = record.IngredientSkuId,
+                    Id = record.Id,
                     IngredientId = record.IngredientId,
                     UnitPrice = record.UnitPrice,
                     Stock = record.Stock,
@@ -47,7 +47,7 @@ public class IngredientSkuSeeder : IDataSeeder
 
     private class IngredientSkuRecord
     {
-        public int IngredientSkuId { get; set; }
+        public int Id { get; set; }
         public int IngredientId { get; set; }
         public decimal UnitPrice { get; set; }
         public int Stock { get; set; }

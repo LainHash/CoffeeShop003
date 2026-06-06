@@ -30,7 +30,7 @@ public class StockTransactionSeeder : IDataSeeder
             {
                 context.StockTransactions.Add(new StockTransaction
                 {
-                    StockTransactionId = record.StockTransactionId,
+                    Id = record.Id,
                     Type = record.Type,
                     Quantity = record.Quantity,
                     Note = record.Note,
@@ -47,7 +47,7 @@ public class StockTransactionSeeder : IDataSeeder
 
     private class StockTransactionRecord
     {
-        public int StockTransactionId { get; set; }
+        public int Id { get; set; }
         public string Type { get; set; } = string.Empty;
         public int Quantity { get; set; }
         public string? Note { get; set; }

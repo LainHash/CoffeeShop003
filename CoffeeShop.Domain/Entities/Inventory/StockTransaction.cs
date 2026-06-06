@@ -1,10 +1,11 @@
 
 
+using CoffeeShop.Domain.Common.Models;
+
 namespace CoffeeShop.Domain.Entities.Inventory
 {
-    public class StockTransaction
+    public class StockTransaction : BaseEntity
     {
-        public int StockTransactionId { get; set; }
         public string Type { get; set; } = null!;
         public int Quantity { get; set; }
         public string? Note { get; set; }

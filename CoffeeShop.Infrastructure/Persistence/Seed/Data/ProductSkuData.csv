@@ -1,4 +1,4 @@
-ProductSkuId,UnitPrice,Stock,Unit,Status,ProductId
+﻿Id,UnitPrice,Stock,Unit,Status,ProductId
 1,25000,0,Cup,Active,1
 2,29000,0,Cup,Active,2
 3,15000,0,Cup,Active,3

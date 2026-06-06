@@ -1,5 +1,4 @@
-﻿using CoffeeShop.Domain.Common.Constants;
-using CoffeeShop.Domain.Entities.Catalog;
+﻿using CoffeeShop.Domain.Entities.Catalog;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -44,7 +43,7 @@ namespace CoffeeShop.Infrastructure.Persistence.Configurations.Catalog
 
             builder.Property(t => t.Status)
                 .IsRequired()
-                .HasDefaultValue(TableStatus.Available)
+                .HasDefaultValue("Available")
                 .HasMaxLength(20);
 
             builder.Property(t => t.CreatedAt)

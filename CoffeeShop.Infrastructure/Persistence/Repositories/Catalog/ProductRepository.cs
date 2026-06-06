@@ -1,8 +1,8 @@
-﻿using CoffeeShop.Application.Common.Models;
+﻿using CoffeeShop.Application.Common.Constants;
+using CoffeeShop.Application.Common.Models;
 using CoffeeShop.Application.Features.Catalog.Products.DTOs;
 using CoffeeShop.Application.Features.Misc.Images.DTOs;
 using CoffeeShop.Application.Interfaces.Repositories.Catalog;
-using CoffeeShop.Domain.Common.Constants;
 using CoffeeShop.Domain.Entities.Catalog;
 using CoffeeShop.Domain.Entities.Inventory;
 using CoffeeShop.Domain.Entities.Misc;

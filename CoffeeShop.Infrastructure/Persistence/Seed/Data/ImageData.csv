@@ -1,4 +1,4 @@
-ImageId,ImageUrl,IsPrimary,ReferenceId,Type
+﻿Id,ImageUrl,IsPrimary,ReferenceId,Type
 1,https://www.sharmispassions.com/wp-content/uploads/2012/07/espresso-coffee-recipe022.jpg,1,1,Product
 2,https://cdn.shopify.com/s/files/1/0838/4525/files/Doppio_Espresso_1024x1024.jpg?v=1765302631,1,2,Product
 3,https://file.hstatic.net/200000079049/file/americano-1_6b32372e76b84139a0b4935c96d49d05.jpeg,1,3,Product

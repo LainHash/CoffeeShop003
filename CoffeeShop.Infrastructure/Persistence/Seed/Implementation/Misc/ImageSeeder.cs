@@ -29,7 +29,7 @@ public class ImageSeeder : IDataSeeder
             {
                 context.Images.Add(new Image
                 {
-                    ImageId = record.ImageId,
+                    Id = record.Id,
                     ImageUrl = record.ImageUrl,
                     IsPrimary = record.IsPrimary == 1,
                     ReferenceId = record.ReferenceId,
@@ -46,7 +46,7 @@ public class ImageSeeder : IDataSeeder
 
     private class ImageRecord
     {
-        public int ImageId { get; set; }
+        public int Id { get; set; }
         public string ImageUrl { get; set; } = string.Empty;
         public int IsPrimary { get; set; }
         public int ReferenceId { get; set; }
